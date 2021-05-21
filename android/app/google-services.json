@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "844315765970",
+    "project_id": "appetit-sajat",
+    "storage_bucket": "appetit-sajat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844315765970:android:d906799b3cb136b129110b",
+        "android_client_info": {
+          "package_name": "com.appetit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "844315765970-ass46qf1dp0pve7c65raauspn6ssjsfl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.appetit",
+            "certificate_hash": "dfdc357a38c35229019f6fc66fd42310c52fafa6"
+          }
+        },
+        {
+          "client_id": "844315765970-7rnkhill9to38p304pernr0566bkdqdq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAML48H23BqIkZHoC__MxAF9xVBn_4v7iU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "844315765970-7rnkhill9to38p304pernr0566bkdqdq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

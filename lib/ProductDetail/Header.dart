@@ -12,7 +12,8 @@ class Header extends StatelessWidget {
           height: 50,
           left: 30,
           top: 30,
-          child: TextButton(
+          child: MaterialButton(
+            splashColor: null,
             onPressed: () {
               Navigator.pop(context);
             },

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'DATABASE/Content.dart';
 import 'Header/Header.dart';
 import 'HomeScreen/HomeScreen.dart';
 import 'NavBar/NavBar.dart';
+import 'Reputation/Reputation.dart';
 import 'SearchScreen/SearchScreen.dart';
-import 'TopUpScreen/TopUpScreen.dart';
+import 'Track/Track.dart';
+import 'Track/TrackCard.dart';
 
 void main() {
   runApp(Appetit());
@@ -13,12 +16,12 @@ void main() {
 
 class Appetit extends StatefulWidget {
 
-
   @override
   _AppetitState createState() => _AppetitState();
 }
 
 class _AppetitState extends State<Appetit> {
+
   int i = 1;
 
   _setIndex(int i){
@@ -29,13 +32,13 @@ class _AppetitState extends State<Appetit> {
 
   Widget _changeActivity(int i){
     if(i==0){
-      return TopUpScreen();
+      return delivered? Reputation(_setIndex): Track(_setIndex);
     }
     else if(i==1){
-      return HomeScreen();
+      return HomeScreen(_setIndex);
     }
     else if(i==2){
-      return SearchScreen();
+      return SearchScreen(_setIndex);
     }
     else{
       return Container();

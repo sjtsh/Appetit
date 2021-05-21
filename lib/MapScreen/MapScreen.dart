@@ -65,7 +65,7 @@ class _MapScreenState extends State<MapScreen> {
               markerId: MarkerId(locationsID[i]),
               infoWindow: InfoWindow(title: locationsID[i]),
               icon: BitmapDescriptor.defaultMarkerWithHue(
-                  BitmapDescriptor.hueGreen),
+                  BitmapDescriptor.hueBlue),
               position: locations[i],
             ));
           }
@@ -91,7 +91,7 @@ class _MapScreenState extends State<MapScreen> {
                     ..._restaurants,
                   },
                   // onLongPress: _addMarker,
-                  myLocationEnabled: true,
+                  // myLocationEnabled: true,
               ),
               Header(),
             ],

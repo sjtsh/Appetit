@@ -1,17 +1,16 @@
+import 'package:appetit/DATABASE/Content.dart';
 import 'package:flutter/material.dart';
 
 class DetailImage extends StatelessWidget {
 
-  final List<BoxShadow> boxShadow = const [
-    BoxShadow(color: Color(0xff000000), blurRadius: 10, offset: Offset(0, 10))
-  ];
   final AssetImage img;
 
   DetailImage(this.img);
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
+    return MaterialButton(
+      splashColor: Colors.black,
       onPressed: () {
         Navigator.pop(context);
       },
@@ -27,7 +26,7 @@ class DetailImage extends StatelessWidget {
                 color: Color(0xff272727),
                 borderRadius: BorderRadius.all(Radius.circular(20)),
                 border: Border.all(color: Colors.black, width: 1),
-                boxShadow: boxShadow,
+                boxShadow: boxShadowPrimary,
               ),
             ),
           ),

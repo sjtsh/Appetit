@@ -6,34 +6,47 @@ import 'Restaurant.dart';
 
 class ProductDetail extends StatelessWidget {
   final AssetImage img;
+  final Function _setIndex;
 
-  ProductDetail(this.img);
+  ProductDetail(this.img, this._setIndex);
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-          color: Color(0xff272727),
-          child: Stack(
-            children: [
-              Container(
+        color: Color(0xff272727),
+        child: Stack(
+          children: [
+            Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
-                child: ListView(
-                  children: [
-                    SizedBox(
+              child: ListView(
+                children: [
+                  SizedBox(
                     height: 140,
-                    ),
-                    DetailImage(img),
-                    Restaurant(6),
-                    Restaurant(5),
-                    Restaurant(4),
-                  ],
-                ),
+                  ),
+                  DetailImage(img),
+                  Restaurant(
+                    6,
+                    _setIndex,
+                    condition: true,
+                  ),
+                  Restaurant(
+                    5,
+                    _setIndex,
+                    condition: true,
+                  ),
+                  Restaurant(
+                    4,
+                    _setIndex,
+                    condition: true,
+                  ),
+                ],
               ),
-              Header(),
-            ],
-          ),
+            ),
+            Header(),
+          ],
         ),
+      ),
     );
   }
 }

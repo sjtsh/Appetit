@@ -7,14 +7,14 @@ class NavBar extends StatefulWidget {
   NavBar(this._setIndex);
 
   @override
-  _NavBarState createState() => _NavBarState();
+  NavBarState createState() => NavBarState();
 }
 
-class _NavBarState extends State<NavBar> {
-  int _currentIndex = 1;
+class NavBarState extends State<NavBar> {
+  static int currentIndex = 1;
 
-  void _onItemTapped(int i){
-    _currentIndex = i;
+  static void onItemTapped(int i){
+    currentIndex = i;
   }
 
   @override
@@ -23,7 +23,7 @@ class _NavBarState extends State<NavBar> {
       child: CustomNavigationBar(
         strokeColor: Colors.black,
         iconSize: 30,
-        currentIndex: _currentIndex,
+        currentIndex: currentIndex,
         selectedColor: Colors.black,
         backgroundColor: Colors.white.withOpacity(0.1),
         borderRadius: Radius.circular(20),
@@ -31,7 +31,7 @@ class _NavBarState extends State<NavBar> {
           print("clicked");
           print(i);
           widget._setIndex(i);
-          _onItemTapped(i);
+          onItemTapped(i);
         },
         items: [
           CustomNavigationBarItem(

@@ -8,6 +8,10 @@ import 'Results.dart';
 import 'Search.dart';
 
 class SearchScreen extends StatefulWidget {
+
+  final Function _setIndex;
+  SearchScreen(this._setIndex);
+
   @override
   _SearchScreenState createState() => _SearchScreenState();
 }
@@ -22,7 +26,7 @@ class _SearchScreenState extends State<SearchScreen> {
       if (names[i] == input) {
         print("found");
         setState(() {
-          results.add(Restaurant(i));
+          results.add(Restaurant(i, widget._setIndex));
           change = true;
         });
       }
@@ -35,7 +39,7 @@ class _SearchScreenState extends State<SearchScreen> {
         children: results,
       );
     } else {
-      return Favorites();
+      return Favorites(widget._setIndex);
     }
   }
 

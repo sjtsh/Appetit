@@ -19,7 +19,8 @@ class Heading2 extends StatelessWidget {
           Expanded(
             child: Container(),
           ),
-          TextButton(
+          MaterialButton(
+            splashColor: Colors.black,
             onPressed: () {
               Navigator.push(
                 context,

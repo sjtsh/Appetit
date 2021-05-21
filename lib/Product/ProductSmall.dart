@@ -1,15 +1,14 @@
+import 'package:appetit/DATABASE/Content.dart';
 import 'package:appetit/ProductDetail/ProductDetail.dart';
 import 'package:flutter/material.dart';
 
 class ProductSmall extends StatelessWidget {
 
-  final List<BoxShadow> boxShadow = const [
-    BoxShadow(color: Color(0xff000000), blurRadius: 10, offset: Offset(0, 10))
-  ];
 
   final AssetImage img;
+  final Function _setIndex;
 
-  ProductSmall(this.img);
+  ProductSmall(this.img, this._setIndex);
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +21,11 @@ class ProductSmall extends StatelessWidget {
           color: Color(0xff272727),
           borderRadius: BorderRadius.all(Radius.circular(20)),
           border: Border.all(color: Colors.black, width: 1),
-          boxShadow: boxShadow,
+          boxShadow: boxShadowPrimary,
         ),
         child: Center(
-          child: TextButton(
+          child: MaterialButton(
+            splashColor: Colors.black,
             child: Image(
               fit: BoxFit.cover,
               image: img,
@@ -33,7 +33,7 @@ class ProductSmall extends StatelessWidget {
             onPressed: (){
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProductDetail(img)),
+                MaterialPageRoute(builder: (context) => ProductDetail(img, _setIndex)),
               );
             },
           ),

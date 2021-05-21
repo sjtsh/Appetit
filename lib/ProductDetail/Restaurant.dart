@@ -1,14 +1,14 @@
+import 'package:appetit/NavBar/NavBar.dart';
 import 'package:flutter/material.dart';
 
 import 'package:appetit/DATABASE/Content.dart';
 
 class Restaurant extends StatelessWidget {
-  final int index;
-  final List<BoxShadow> boxShadow = const [
-    BoxShadow(color: Color(0xff000000), blurRadius: 10, offset: Offset(0, 10))
-  ];
 
-  Restaurant(this.index);
+  final Function _setIndex;
+  final bool condition;
+  final int index;
+  Restaurant(this.index, this._setIndex, {this.condition = false});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class Restaurant extends StatelessWidget {
           color: Color(0xff272727),
           borderRadius: BorderRadius.all(Radius.circular(20)),
           border: Border.all(color: Colors.black, width: 1),
-          boxShadow: boxShadow,
+          boxShadow: boxShadowPrimary,
         ),
         child: Row(
           children: [
@@ -84,9 +84,16 @@ class Restaurant extends StatelessWidget {
                       ),
                       borderRadius: BorderRadius.all(Radius.circular(20))
                       ),
-                child: TextButton(
+                child: MaterialButton(
+                  splashColor: Colors.black,
                   onPressed: () {
-                    print("bought");
+                    delivered = false;
+                    delivering = names[index];
+                    NavBarState.onItemTapped(0);
+                    if(condition){
+                      Navigator.pop(context);
+                    }
+                    _setIndex(0);
                   },
                   child: Text(
                     "Want",

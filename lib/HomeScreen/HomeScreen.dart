@@ -5,6 +5,11 @@ import 'package:appetit/Product/ProductLarge.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
+
+  final Function _setIndex;
+
+  HomeScreen(this._setIndex);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -15,9 +20,9 @@ class HomeScreen extends StatelessWidget {
           height: 140,
           ),
           Heading1(),
-          ProductLarge(),
+          ProductLarge(_setIndex),
           Heading2(),
-          Grid(),
+          Grid(_setIndex),
         ],
       ),
     );

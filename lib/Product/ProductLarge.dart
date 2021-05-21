@@ -3,18 +3,21 @@ import 'package:appetit/ProductDetail/ProductDetail.dart';
 import 'package:flutter/material.dart';
 
 class ProductLarge extends StatelessWidget {
-  final List<BoxShadow> boxShadow = const [
-    BoxShadow(color: Color(0xff000000), blurRadius: 10, offset: Offset(0, 10))
-  ];
+
+  final Function _setIndex;
+
+  ProductLarge(this._setIndex);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 15.0, bottom: 25),
-      child: TextButton(
+      child: MaterialButton(
+        splashColor: Colors.black,
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => ProductDetail(pizzaImg[2])),
+            MaterialPageRoute(builder: (context) => ProductDetail(pizzaImg[2], _setIndex)),
           );
         },
         child: Container(
@@ -23,7 +26,7 @@ class ProductLarge extends StatelessWidget {
             color: Color(0xff272727),
             borderRadius: BorderRadius.all(Radius.circular(20)),
             border: Border.all(color: Colors.black, width: 1),
-            boxShadow: boxShadow,
+            boxShadow: boxShadowPrimary,
           ),
           child: Row(
             children: [
@@ -32,7 +35,7 @@ class ProductLarge extends StatelessWidget {
                 child: Hero(
                   tag: "product",
                   child: Image(
-                    width: 100,
+                    width: 70,
                     image: pizzaImg[2],
                   ),
                 ),

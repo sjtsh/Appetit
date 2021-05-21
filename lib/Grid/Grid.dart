@@ -2,6 +2,11 @@ import 'package:appetit/Product/ProductSmall.dart';
 import 'package:flutter/material.dart';
 
 class Grid extends StatelessWidget {
+
+  final Function _setIndex;
+
+  Grid(this._setIndex);
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -12,8 +17,8 @@ class Grid extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ProductSmall(AssetImage("assets/hamburger.png")),
-              ProductSmall(AssetImage("assets/hotdog.png")),
+              ProductSmall(AssetImage("assets/hamburger.png"), _setIndex),
+              ProductSmall(AssetImage("assets/hotdog.png"), _setIndex),
             ],
           ),
         ),
@@ -22,8 +27,8 @@ class Grid extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ProductSmall(AssetImage("assets/pizza.png")),
-              ProductSmall(AssetImage("assets/icecream.png")),
+              ProductSmall(AssetImage("assets/pizza.png"), _setIndex),
+              ProductSmall(AssetImage("assets/icecream.png"), _setIndex),
             ],
           ),
         ),
@@ -32,8 +37,8 @@ class Grid extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ProductSmall(AssetImage("assets/noodles.png")),
-              ProductSmall(AssetImage("assets/hamburger.png")),
+              ProductSmall(AssetImage("assets/noodles.png"), _setIndex),
+              ProductSmall(AssetImage("assets/hamburger.png"), _setIndex),
             ],
           ),
         ),

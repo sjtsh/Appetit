@@ -4,10 +4,14 @@ import 'package:flutter/material.dart';
 
 class Favorites extends StatelessWidget {
 
+  final Function _setIndex;
+
+  Favorites(this._setIndex);
+
   List<Widget> _favouriteResult(){
     List<Widget> results = [];
     for(int i=0; i<favourites.length; i++){
-      results.add(Restaurant(favourites[i]));
+      results.add(Restaurant(favourites[i], _setIndex));
     }
     return results;
   }

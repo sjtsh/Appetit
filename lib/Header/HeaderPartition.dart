@@ -20,7 +20,7 @@ class HeaderPartition extends StatelessWidget {
         ),
         Positioned(
           height: 50,
-          right: 30,
+          right: 10,
           top: 30,
           child: ProfileHome(),
         ),
