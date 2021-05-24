@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 class ProductLarge extends StatelessWidget {
 
   final Function _setIndex;
+  final Function _setLogged;
 
-  ProductLarge(this._setIndex);
+  ProductLarge(this._setIndex, this._setLogged);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class ProductLarge extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => ProductDetail(pizzaImg[2], _setIndex)),
+            MaterialPageRoute(builder: (context) => ProductDetail(pizzaImg[2], _setIndex, _setLogged)),
           );
         },
         child: Container(

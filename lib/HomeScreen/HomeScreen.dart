@@ -7,8 +7,9 @@ import 'package:flutter/material.dart';
 class HomeScreen extends StatelessWidget {
 
   final Function _setIndex;
+  final Function _setLogged;
 
-  HomeScreen(this._setIndex);
+  HomeScreen(this._setIndex, this._setLogged);
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +21,9 @@ class HomeScreen extends StatelessWidget {
           height: 140,
           ),
           Heading1(),
-          ProductLarge(_setIndex),
-          Heading2(),
-          Grid(_setIndex),
+          ProductLarge(_setIndex, _setLogged),
+          Heading2(_setLogged),
+          Grid(_setIndex, _setLogged),
         ],
       ),
     );

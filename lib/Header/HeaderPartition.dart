@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 import 'ProfileHome.dart';
 
 class HeaderPartition extends StatelessWidget {
+
+  final Function _setLogged;
+
+  HeaderPartition(this._setLogged);
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -22,7 +27,7 @@ class HeaderPartition extends StatelessWidget {
           height: 50,
           right: 10,
           top: 30,
-          child: ProfileHome(),
+          child: ProfileHome(_setLogged),
         ),
         Positioned(
           top: 50,

@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 class Grid extends StatelessWidget {
 
   final Function _setIndex;
+  final Function _setLogged;
 
-  Grid(this._setIndex);
+  Grid(this._setIndex, this._setLogged);
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +18,8 @@ class Grid extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ProductSmall(AssetImage("assets/hamburger.png"), _setIndex),
-              ProductSmall(AssetImage("assets/hotdog.png"), _setIndex),
+              ProductSmall(AssetImage("assets/hamburger.png"), _setIndex, _setLogged),
+              ProductSmall(AssetImage("assets/hotdog.png"), _setIndex, _setLogged),
             ],
           ),
         ),
@@ -27,8 +28,8 @@ class Grid extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ProductSmall(AssetImage("assets/pizza.png"), _setIndex),
-              ProductSmall(AssetImage("assets/icecream.png"), _setIndex),
+              ProductSmall(AssetImage("assets/pizza.png"), _setIndex, _setLogged),
+              ProductSmall(AssetImage("assets/icecream.png"), _setIndex, _setLogged),
             ],
           ),
         ),
@@ -37,8 +38,8 @@ class Grid extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ProductSmall(AssetImage("assets/noodles.png"), _setIndex),
-              ProductSmall(AssetImage("assets/hamburger.png"), _setIndex),
+              ProductSmall(AssetImage("assets/noodles.png"), _setIndex, _setLogged),
+              ProductSmall(AssetImage("assets/hamburger.png"), _setIndex, _setLogged),
             ],
           ),
         ),

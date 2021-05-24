@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+var loggedIn = false;
 
 var status = true;
 
@@ -75,9 +76,9 @@ var locationsID = [
   "Appetit9 -Ramit KitchenLand"
 ];
 var rp = 460.0;
-List<BoxShadow> boxShadowProgress = const [
+List<BoxShadow> boxShadowConsist = const [
   BoxShadow(
-      color: Color(0x40000000),
+      color: Color(0x66000000),
       blurRadius: 10,
       offset: Offset(0, 0),
       spreadRadius: 10

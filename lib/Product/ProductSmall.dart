@@ -7,8 +7,9 @@ class ProductSmall extends StatelessWidget {
 
   final AssetImage img;
   final Function _setIndex;
+  final Function _setLogged;
 
-  ProductSmall(this.img, this._setIndex);
+  ProductSmall(this.img, this._setIndex, this._setLogged);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class ProductSmall extends StatelessWidget {
             onPressed: (){
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProductDetail(img, _setIndex)),
+                MaterialPageRoute(builder: (context) => ProductDetail(img, _setIndex, _setLogged)),
               );
             },
           ),

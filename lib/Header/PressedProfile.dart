@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'dart:ui';
 
 class PressedProfile extends StatefulWidget {
+
+  final Function _setLogged;
+
+  PressedProfile(this._setLogged);
+
   @override
   _PressedProfileState createState() => _PressedProfileState();
 }
@@ -49,7 +54,7 @@ class _PressedProfileState extends State<PressedProfile>
                 width: 250,
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: DialogueBox(),
+                  child: DialogueBox(widget._setLogged),
                 ),
               ),
             ),

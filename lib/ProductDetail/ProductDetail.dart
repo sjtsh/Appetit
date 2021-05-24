@@ -7,8 +7,9 @@ import 'Restaurant.dart';
 class ProductDetail extends StatelessWidget {
   final AssetImage img;
   final Function _setIndex;
+  final Function _setLogged;
 
-  ProductDetail(this.img, this._setIndex);
+  ProductDetail(this.img, this._setIndex, this._setLogged);
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,7 @@ class ProductDetail extends StatelessWidget {
                 ],
               ),
             ),
-            Header(),
+            Header(_setLogged),
           ],
         ),
       ),

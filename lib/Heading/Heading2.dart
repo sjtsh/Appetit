@@ -2,6 +2,8 @@ import 'package:appetit/MapScreen/MapScreen.dart';
 import 'package:flutter/material.dart';
 
 class Heading2 extends StatelessWidget {
+  final Function _setLogged;
+  Heading2(this._setLogged);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class Heading2 extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MapScreen()),
+                MaterialPageRoute(builder: (context) => MapScreen(_setLogged)),
               );
             },
             child: Icon(

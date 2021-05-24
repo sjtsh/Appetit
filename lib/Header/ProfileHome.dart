@@ -5,6 +5,10 @@ import 'PressedProfile.dart';
 
 class ProfileHome extends StatelessWidget {
 
+  final Function _setLogged;
+
+  ProfileHome(this._setLogged);
+
   @override
   Widget build(BuildContext context) {
       return MaterialButton(
@@ -12,7 +16,7 @@ class ProfileHome extends StatelessWidget {
         onPressed: (){
           showDialog(
             context: context,
-            builder: (_) => PressedProfile(),
+            builder: (_) => PressedProfile(_setLogged),
           );
         },
         child: Stack(

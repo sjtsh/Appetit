@@ -1,10 +1,15 @@
 import 'package:appetit/DATABASE/Content.dart';
-import 'package:appetit/Reputation/ProfileRep.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'ProfileDialog.dart';
 
 class DialogueBox extends StatefulWidget {
+
+  final Function _setLogged;
+
+  DialogueBox(this._setLogged);
+
   @override
   _DialogueBoxState createState() => _DialogueBoxState();
 }
@@ -55,7 +60,10 @@ class _DialogueBoxState extends State<DialogueBox> {
               ),
             )),
         MaterialButton(
-            onPressed: () {},
+            onPressed: () async{
+                await FirebaseAuth.instance.signOut();
+                widget._setLogged(false);
+              },
             child: Container(
               width: 160,
               decoration: BoxDecoration(

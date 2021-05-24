@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'Favorites.dart';
-import 'Results.dart';
 import 'Search.dart';
 
 class SearchScreen extends StatefulWidget {

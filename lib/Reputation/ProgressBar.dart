@@ -2,8 +2,6 @@ import 'package:appetit/DATABASE/Content.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
-import '../InnerShadow.dart';
-
 class ProgressBar extends StatelessWidget {
 
   final bool rep;
