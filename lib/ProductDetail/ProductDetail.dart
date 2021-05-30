@@ -1,3 +1,4 @@
+import 'package:appetit/DATABASE/GetRestaurants.dart';
 import 'package:appetit/ProductDetail/Header.dart';
 import 'package:flutter/material.dart';
 
@@ -5,7 +6,7 @@ import 'Image.dart';
 import 'Restaurant.dart';
 
 class ProductDetail extends StatelessWidget {
-  final AssetImage img;
+  final String img;
   final Function _setIndex;
   final Function _setLogged;
 
@@ -26,17 +27,17 @@ class ProductDetail extends StatelessWidget {
                     height: 140,
                   ),
                   DetailImage(img),
-                  Restaurant(
+                  GetRestaurants(
                     6,
                     _setIndex,
                     condition: true,
                   ),
-                  Restaurant(
+                  GetRestaurants(
                     5,
                     _setIndex,
                     condition: true,
                   ),
-                  Restaurant(
+                  GetRestaurants(
                     4,
                     _setIndex,
                     condition: true,

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class DetailImage extends StatelessWidget {
 
-  final AssetImage img;
+  final String img;
 
   DetailImage(this.img);
 
@@ -36,10 +36,7 @@ class DetailImage extends StatelessWidget {
             child: Hero(
               tag: "product",
               child: InteractiveViewer(
-                child: Image(
-                  fit: BoxFit.fitHeight,
-                  image: img,
-                ),
+                child: Image.network(img, fit: BoxFit.contain,),
               ),
             ),
             ),

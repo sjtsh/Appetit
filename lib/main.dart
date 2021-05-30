@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'Appetit.dart';
+import 'ConstructionScreen/TestScreen.dart';
 import 'DATABASE/Content.dart';
 import 'Log In/AndroidAuthProvider.dart';
 import 'NotAppetit.dart';
@@ -11,6 +12,7 @@ void main() async{
   await AuthProvider().initialize();
 
    runApp(App());
+
 }
 
 class App extends StatefulWidget {

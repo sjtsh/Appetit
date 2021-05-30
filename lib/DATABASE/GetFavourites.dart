@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Results extends StatelessWidget {
+class GetFavourites extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container();

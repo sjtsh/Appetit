@@ -1,14 +1,17 @@
 import 'package:appetit/NavBar/NavBar.dart';
+import 'package:appetit/Track/Timer.dart';
 import 'package:flutter/material.dart';
 
 import 'package:appetit/DATABASE/Content.dart';
 
 class Restaurant extends StatelessWidget {
 
+  final List products;
   final Function _setIndex;
   final bool condition;
   final int index;
-  Restaurant(this.index, this._setIndex, {this.condition = false});
+
+  Restaurant(this.products, this.index, this._setIndex, this.condition);
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +29,10 @@ class Restaurant extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: Image(
+              child: Image.network(
+                products[index].data()['Image'],
                 width: 100,
                 fit: BoxFit.fitHeight,
-                image: images[index],
               ),
             ),
             Container(
@@ -50,7 +53,7 @@ class Restaurant extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.only(top: 5),
                     child: Text(
-                      prices[index],
+                      "\$" + products[index].data()['Price'].toString(),
                       style: TextStyle(
                         color: Colors.white.withOpacity(0.5),
                         fontSize: 15,
@@ -88,8 +91,12 @@ class Restaurant extends StatelessWidget {
                   splashColor: Colors.black,
                   onPressed: () {
                     delivered = false;
-                    delivering = names[index];
+                    newCost = products[index].data()['Price'];
+                    newRP = (products[index].data()['Price']*0.2).round()*10;
+                    delivering = products[index].data()['Name'];
                     NavBarState.onItemTapped(0);
+                    balance -= products[index].data()['Price'];
+                    TimerState.stopTimer();
                     if(condition){
                       Navigator.pop(context);
                     }

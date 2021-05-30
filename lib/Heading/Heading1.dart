@@ -1,12 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Heading1 extends StatelessWidget {
+
+  final user = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Text(
-          "Hi Sajat,",
+          "Hi " + (user!.displayName!.split(" ")[0]) + ",",
           style: TextStyle(
             color: Colors.white,
             fontSize: 40,

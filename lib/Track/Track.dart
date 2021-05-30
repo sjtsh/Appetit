@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../Reputation/Heading.dart';
 import '../Reputation/ProgressBar.dart';
+import 'Timer.dart';
 import 'TrackCard.dart';
 
 class Track extends StatelessWidget {
 
   final Function _setIndex;
-
   Track(this._setIndex);
 
   @override
@@ -17,7 +17,7 @@ class Track extends StatelessWidget {
         width: double.infinity,
         child: Column(
           children: [
-            Heading(false),
+            TimerWid(),
             Expanded(child: Container()),
             ProgressBar(false),
             Expanded(child: Container()),

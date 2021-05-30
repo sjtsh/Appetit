@@ -1,4 +1,5 @@
 import 'package:appetit/DATABASE/Content.dart';
+import 'package:appetit/DATABASE/GetRestaurants.dart';
 import 'package:appetit/ProductDetail/Restaurant.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,7 @@ class Favorites extends StatelessWidget {
   List<Widget> _favouriteResult(){
     List<Widget> results = [];
     for(int i=0; i<favourites.length; i++){
-      results.add(Restaurant(favourites[i], _setIndex));
+      results.add(GetRestaurants(favourites[i], _setIndex));
     }
     return results;
   }

@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 
 class ProductLarge extends StatelessWidget {
 
+  final List products;
   final Function _setIndex;
   final Function _setLogged;
 
-  ProductLarge(this._setIndex, this._setLogged);
+  ProductLarge(this.products, this._setIndex, this._setLogged);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class ProductLarge extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => ProductDetail(pizzaImg[2], _setIndex, _setLogged)),
+            MaterialPageRoute(builder: (context) => ProductDetail(products[0].data()['Image'], _setIndex, _setLogged)),
           );
         },
         child: Container(
@@ -35,10 +36,7 @@ class ProductLarge extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Hero(
                   tag: "product",
-                  child: Image(
-                    width: 70,
-                    image: pizzaImg[2],
-                  ),
+                  child: Image.network(products[0].data()['Image'], width: 70,)
                 ),
               ),
               Column(
@@ -46,7 +44,7 @@ class ProductLarge extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Who wants pizza?",
+                    products[0].data()['Caption'],
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
@@ -55,7 +53,7 @@ class ProductLarge extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.only(top: 5),
                     child: Text(
-                      "\$12",
+                      "\$" + products[0].data()['Price'].toString(),
                       style: TextStyle(
                         color: Colors.white.withOpacity(0.5),
                         fontSize: 15,
@@ -65,7 +63,7 @@ class ProductLarge extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.only(top: 5),
                     child: Text(
-                      "9min",
+                      "16min",
                       style: TextStyle(
                         color: Colors.white.withOpacity(0.5),
                         fontSize: 15,

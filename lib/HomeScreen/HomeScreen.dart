@@ -1,4 +1,5 @@
-import 'package:appetit/Grid/Grid.dart';
+import 'package:appetit/DATABASE/GetGrid.dart';
+import 'package:appetit/DATABASE/GetProductLarge.dart';
 import 'package:appetit/Heading/Heading1.dart';
 import 'package:appetit/Heading/Heading2.dart';
 import 'package:appetit/Product/ProductLarge.dart';
@@ -21,9 +22,9 @@ class HomeScreen extends StatelessWidget {
           height: 140,
           ),
           Heading1(),
-          ProductLarge(_setIndex, _setLogged),
+          GetProductLarge(_setIndex, _setLogged),
           Heading2(_setLogged),
-          Grid(_setIndex, _setLogged),
+          GetGrid(_setIndex, _setLogged),
         ],
       ),
     );

@@ -1,37 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 var loggedIn = false;
 
 var status = true;
-
-var images = [
-  AssetImage("assets/hamburger.png"),
-  AssetImage("assets/hotdog.png"),
-  AssetImage("assets/icecream.png"),
-  AssetImage("assets/noodles.png"),
-  AssetImage("assets/pizza.png"),
-  AssetImage("assets/pizza1.png"),
-  AssetImage("assets/pizza2.png"),
-];
-var names = [
-  "Ham Burger",
-  "Hot Dog",
-  "Ice Cream",
-  "Noodles",
-  "Pizza",
-  "Cheese Pizza",
-  "Sausage Pizza"
-];
-var prices = [
-  "\$7",
-  "\$3",
-  "\$10",
-  "\$2",
-  "\$12",
-  "\$14",
-  "\$21",
-];
+final personal = FirebaseFirestore.instance.collection("Personal");
+final productsContent = FirebaseFirestore.instance.collection("Products");
 var restaurants = [
   "Attica",
   "Trisara",
@@ -41,17 +17,11 @@ var restaurants = [
   "Attica",
   "Trisara",
 ];
+
 var times = ["12min", "16min", "9min", "25min", "11min", "12min", "16min"];
-var pizzaImg = [
-  AssetImage("assets/pizza.png"),
-  AssetImage("assets/pizza1.png"),
-  AssetImage("assets/pizza2.png"),
-  AssetImage("assets/pizza3.png"),
-  AssetImage("assets/pizza1.png"),
-  AssetImage("assets/pizza2.png"),
-];
+
 var favourites = [6, 1, 2, 3, 5];
-var balance = "\$893.23";
+var balance = 100.00;
 
 var locations = [
   LatLng(37.416210, -122.079219),
@@ -64,6 +34,7 @@ var locations = [
   LatLng(27.636968, 85.413761),
   LatLng(27.644188, 85.406240),
 ];
+
 var locationsID = [
   "Appetit1 -Starbucks",
   "Appetit2 -Trisara",
@@ -75,6 +46,7 @@ var locationsID = [
   "Appetit8 -Attica",
   "Appetit9 -Ramit KitchenLand"
 ];
+
 var rp = 460.0;
 List<BoxShadow> boxShadowConsist = const [
   BoxShadow(
@@ -126,8 +98,9 @@ Gradient linearGradientTrack = LinearGradient(
   end: Alignment.bottomCenter,
 );
 
-String timeRemaining = "12:02 min";
+int timeRemaining = 6;
 
 bool delivered = true;
-
+var newCost = 0;
+var newRP = 0;
 String delivering = "Pizza";

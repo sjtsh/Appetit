@@ -1,3 +1,4 @@
+import 'package:appetit/DATABASE/GetSearch.dart';
 import 'package:flutter/material.dart';
 
 import 'DATABASE/Content.dart';
@@ -33,7 +34,7 @@ class _AppetitState extends State<Appetit> {
     } else if (i == 1) {
       return HomeScreen(_setIndex, widget._setLogged);
     } else if (i == 2) {
-      return SearchScreen(_setIndex);
+      return GetSearch(_setIndex);
     } else {
       return Container();
     }

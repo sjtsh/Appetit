@@ -1,4 +1,5 @@
 import 'package:appetit/DATABASE/Content.dart';
+import 'package:appetit/DATABASE/GetRestaurants.dart';
 import 'package:appetit/ProductDetail/Restaurant.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,8 +9,9 @@ import 'Search.dart';
 
 class SearchScreen extends StatefulWidget {
 
+  final List products;
   final Function _setIndex;
-  SearchScreen(this._setIndex);
+  SearchScreen(this.products, this._setIndex);
 
   @override
   _SearchScreenState createState() => _SearchScreenState();
@@ -21,11 +23,11 @@ class _SearchScreenState extends State<SearchScreen> {
 
   void _changeResults(String input) {
     results = [];
-    for (int i = 0; i < names.length; i++) {
-      if (names[i] == input) {
+    for (int i = 0; i < widget.products.length; i++) {
+      if (widget.products[i].data()['Name'] == input) {
         print("found");
         setState(() {
-          results.add(Restaurant(i, widget._setIndex));
+          results.add(GetRestaurants(i, widget._setIndex));
           change = true;
         });
       }

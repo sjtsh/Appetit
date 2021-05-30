@@ -1,5 +1,8 @@
 import 'package:appetit/DATABASE/Content.dart';
+import 'package:appetit/Track/Timer.dart';
 import 'package:flutter/material.dart';
+
+import 'ProgressBar.dart';
 
 class ReputationButton extends StatelessWidget {
   final bool rep;
@@ -33,6 +36,7 @@ class ReputationButton extends StatelessWidget {
             print("checked out");
           } else {
             print("delivered");
+            TimerState.stopTimer();
             delivered = true;
             _setIndex(0);
           }

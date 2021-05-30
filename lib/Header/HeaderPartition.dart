@@ -33,7 +33,7 @@ class HeaderPartition extends StatelessWidget {
           top: 50,
           right: 90,
           child: Text(
-            balance,
+            "\$" + balance.toString(),
             style: TextStyle(
               color: Colors.white,
               fontSize: 14,

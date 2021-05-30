@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class ProductSmall extends StatelessWidget {
 
 
-  final AssetImage img;
+  final String img;
   final Function _setIndex;
   final Function _setLogged;
 
@@ -14,7 +14,7 @@ class ProductSmall extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
       child: Container(
         height: 120,
         width: 120,
@@ -27,10 +27,7 @@ class ProductSmall extends StatelessWidget {
         child: Center(
           child: MaterialButton(
             splashColor: Colors.black,
-            child: Image(
-              fit: BoxFit.cover,
-              image: img,
-            ),
+            child: Image.network(img, fit: BoxFit.cover,),
             onPressed: (){
               Navigator.push(
                 context,

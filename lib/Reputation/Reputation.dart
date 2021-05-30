@@ -17,7 +17,7 @@ class Reputation extends StatelessWidget {
         width: double.infinity,
         child: Column(
           children: [
-            Heading(true),
+            Heading(),
             Expanded(child: Container()),
             ProgressBar(true),
             Expanded(child: Container()),

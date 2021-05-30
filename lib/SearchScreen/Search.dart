@@ -5,7 +5,7 @@ class Search extends StatelessWidget {
 
   final Function _changeResults;
 
-  Search(this._changeResults);
+  Search( this._changeResults);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,6 @@ class Search extends StatelessWidget {
               textCapitalization: TextCapitalization.words,
               maxLines: 1,
               enableSuggestions: true,
-              autofillHints: names,
               decoration: InputDecoration(
                 hintText: "What's on your mind?",
                 hintStyle: TextStyle(
