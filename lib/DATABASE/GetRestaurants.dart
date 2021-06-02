@@ -7,7 +7,10 @@ class GetRestaurants extends StatelessWidget {
   final Function _setIndex;
   final bool condition;
   final int index;
-  GetRestaurants(this.index, this._setIndex, {this.condition = false});
+  final Function setImage;
+  final Function _setLogged;
+
+  GetRestaurants(this.index, this._setIndex, this._setLogged, this.setImage, {this.condition = false});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,7 @@ class GetRestaurants extends StatelessWidget {
           .snapshots(),
       builder: (context, snapshot){
         if(snapshot.hasData){
-          return Restaurant(snapshot.data!.docs, index, _setIndex, condition);
+          return Restaurant(snapshot.data!.docs, index, _setIndex, _setLogged, condition, setImage);
         }
         return Center(
           child: CircularProgressIndicator(),

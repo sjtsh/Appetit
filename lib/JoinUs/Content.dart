@@ -36,10 +36,10 @@ class Content extends StatelessWidget {
                 height: 120,
               ),
               CredJoinUs(),
-              SizedBox(
-                height: 40,
-              ),
+              Expanded(child: Container()),
               SignButton(_setLogged),
+              SizedBox(
+              height: 20,)
             ],
           ),
         ),

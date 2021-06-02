@@ -1,4 +1,5 @@
-import 'package:appetit/DATABASE/Content.dart';
+
+import 'package:appetit/DialogueBox/DialogueBox.dart';
 import 'package:flutter/material.dart';
 
 import 'PressedProfile.dart';
@@ -6,8 +7,9 @@ import 'PressedProfile.dart';
 class ProfileHome extends StatelessWidget {
 
   final Function _setLogged;
+  final Function _setIndex;
 
-  ProfileHome(this._setLogged);
+  ProfileHome(this._setIndex, this._setLogged);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class ProfileHome extends StatelessWidget {
         onPressed: (){
           showDialog(
             context: context,
-            builder: (_) => PressedProfile(_setLogged),
+            builder: (_) => PressedProfile(_setIndex, _setLogged),
           );
         },
         child: Stack(
@@ -25,8 +27,14 @@ class ProfileHome extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Color(0xffECFAFF).withOpacity(0.6),
-                boxShadow: boxShadowProfile,
+                color: DialogueBoxState.isSelected[1] ? Color(0x99ecfaff) : Color(0x993CC1EB),
+                boxShadow: const [
+                  BoxShadow(
+                      color: Color(0x66607D8B),
+                      blurRadius: 10,
+                      offset: Offset(0, 0),
+                      spreadRadius: 8)
+                ],
               ),
               child: SizedBox(
                 height: 50,
@@ -37,7 +45,7 @@ class ProfileHome extends StatelessWidget {
               margin: EdgeInsets.all(6),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Color(0xffECFAFF),
+                color: DialogueBoxState.isSelected[1] ? Color(0xffecfaff) : Color(0xff3CC1EB),
               ),
               child: SizedBox(
                 height: 35,

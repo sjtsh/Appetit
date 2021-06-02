@@ -1,4 +1,5 @@
-import 'package:appetit/DATABASE/Content.dart';
+
+import 'package:appetit/DialogueBox/DialogueBox.dart';
 import 'package:flutter/material.dart';
 
 class Search extends StatelessWidget {
@@ -16,7 +17,7 @@ class Search extends StatelessWidget {
       decoration: BoxDecoration(
           border: Border(
               bottom: BorderSide(
-                color: Colors.white,
+                color: DialogueBoxState.isSelected[1] ? Colors.white : Colors.black,
                 width: 1,
               ))),
       child: Row(
@@ -25,18 +26,18 @@ class Search extends StatelessWidget {
             child: TextField(
               focusNode: FocusNode(),
               keyboardAppearance: Brightness.dark,
-              cursorColor: Colors.white,
+              cursorColor: DialogueBoxState.isSelected[1] ? Colors.white : Colors.black,
               textCapitalization: TextCapitalization.words,
               maxLines: 1,
               enableSuggestions: true,
               decoration: InputDecoration(
                 hintText: "What's on your mind?",
                 hintStyle: TextStyle(
-                  color: Colors.white.withOpacity(0.5),
+                  color: DialogueBoxState.isSelected[1] ? Colors.white.withOpacity(0.5) : Colors.black.withOpacity(0.5),
                 ),
               ),
               style: TextStyle(
-                color: Colors.white,
+                color: DialogueBoxState.isSelected[1] ? Colors.white : Colors.black,
               ),
               onChanged: (String text){_changeResults(text);},
               onSubmitted: (String text){},
@@ -44,7 +45,7 @@ class Search extends StatelessWidget {
           ),
           Icon(
             Icons.search_outlined,
-            color: Colors.white,
+            color: DialogueBoxState.isSelected[1] ? Colors.white : Colors.black,
           )
         ],
       ),

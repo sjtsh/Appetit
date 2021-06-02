@@ -1,20 +1,24 @@
-import 'package:appetit/DialogueBox/DialogueBox.dart';
-import 'package:flutter/material.dart';
 import 'dart:ui';
 
-class PressedProfile extends StatefulWidget {
+import 'package:appetit/DialogueBox/BalanceDialog.dart';
+import 'package:appetit/DialogueBox/DialogueBox.dart';
+import 'package:flutter/material.dart';
 
+class PressedWant extends StatefulWidget {
+
+  final List products;
   final Function _setIndex;
-  final Function _setLogged;
-
-  PressedProfile(this._setIndex, this._setLogged);
+  final bool condition;
+  final int index;
+  PressedWant(this.products, this._setIndex, this.index, this.condition);
 
   @override
-  _PressedProfileState createState() => _PressedProfileState();
+  State<PressedWant> createState() => _PressedWantState();
 }
 
-class _PressedProfileState extends State<PressedProfile>
+class _PressedWantState extends State<PressedWant>
     with SingleTickerProviderStateMixin {
+
   final bool status = true;
 
   var controller;
@@ -51,11 +55,11 @@ class _PressedProfileState extends State<PressedProfile>
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30))),
               child: SizedBox(
-                height: 400,
+                height: 250,
                 width: 250,
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: DialogueBox(widget._setIndex, widget._setLogged),
+                  child: BalanceDialog(widget.products, widget._setIndex, widget.index, widget.condition),
                 ),
               ),
             ),

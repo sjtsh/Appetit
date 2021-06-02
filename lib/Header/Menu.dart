@@ -1,3 +1,5 @@
+
+import 'package:appetit/DialogueBox/DialogueBox.dart';
 import 'package:flutter/material.dart';
 
 class Menu extends StatelessWidget {
@@ -15,7 +17,7 @@ class Menu extends StatelessWidget {
               height: 30,
               width: 5,
               decoration: BoxDecoration(
-                color: Color(0x80C4C4C4),
+                color: DialogueBoxState.isSelected[1] ? Colors.white.withOpacity(0.5) : Colors.black.withOpacity(0.5),
                 borderRadius: BorderRadius.all(Radius.circular(20)),
               ),
             ),
@@ -26,7 +28,7 @@ class Menu extends StatelessWidget {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: Color(0x80C4C4C4),
+                color: DialogueBoxState.isSelected[1] ? Colors.white.withOpacity(0.5) : Colors.black.withOpacity(0.5),
                 borderRadius: BorderRadius.all(Radius.circular(20)),
               ),
               margin: EdgeInsets.all(3),
@@ -43,7 +45,7 @@ class Menu extends StatelessWidget {
               height: 30,
               width: 5,
               decoration: BoxDecoration(
-                color: Color(0x80C4C4C4),
+                color: DialogueBoxState.isSelected[1] ? Colors.white.withOpacity(0.5) : Colors.black.withOpacity(0.5),
                 borderRadius: BorderRadius.all(Radius.circular(20)),
               ),
             ),

@@ -1,8 +1,8 @@
+
 import 'package:appetit/DATABASE/Content.dart';
+import 'package:appetit/DialogueBox/DialogueBox.dart';
 import 'package:appetit/Track/Timer.dart';
 import 'package:flutter/material.dart';
-
-import 'ProgressBar.dart';
 
 class ReputationButton extends StatelessWidget {
   final bool rep;
@@ -14,10 +14,20 @@ class ReputationButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.black, width: 1),
-        color: Color(0xff272727),
+        border: DialogueBoxState.isSelected[1]
+            ? Border.all(color: Colors.black, width: 1)
+            : Border.all(color: Colors.white),
+        color: DialogueBoxState.isSelected[1] ? Color(0xff272727) : Color(0xffffffff),
         borderRadius: BorderRadius.circular(20),
-        boxShadow: boxShadowPrimary,
+        boxShadow: DialogueBoxState.isSelected[1]
+            ? const [
+          BoxShadow(
+              color: Color(0xff000000), blurRadius: 10, offset: Offset(0, 10))
+        ]
+            : const [
+          BoxShadow(
+              color: Color(0x40000000), blurRadius: 10, offset: Offset(0, 10))
+        ],
       ),
       child: MaterialButton(
         splashColor: Colors.black,
@@ -26,7 +36,7 @@ class ReputationButton extends StatelessWidget {
           child: Text(
             rep ? "CHECKOUT!" : "DELIVERED?",
             style: TextStyle(
-              color: Colors.white,
+              color: DialogueBoxState.isSelected[1] ? Colors.white : Colors.black,
               fontSize: 20,
             ),
           ),
@@ -34,6 +44,9 @@ class ReputationButton extends StatelessWidget {
         onPressed: () {
           if (rep) {
             print("checked out");
+            balance += double.parse((rp/100).toStringAsFixed(2));
+            rp = 0;
+            _setIndex(0);
           } else {
             print("delivered");
             TimerState.stopTimer();

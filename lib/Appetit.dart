@@ -2,11 +2,11 @@ import 'package:appetit/DATABASE/GetSearch.dart';
 import 'package:flutter/material.dart';
 
 import 'DATABASE/Content.dart';
+import 'DialogueBox/DialogueBox.dart';
 import 'Header/Header.dart';
 import 'HomeScreen/HomeScreen.dart';
 import 'NavBar/NavBar.dart';
 import 'Reputation/Reputation.dart';
-import 'SearchScreen/SearchScreen.dart';
 import 'Track/Track.dart';
 
 
@@ -34,7 +34,7 @@ class _AppetitState extends State<Appetit> {
     } else if (i == 1) {
       return HomeScreen(_setIndex, widget._setLogged);
     } else if (i == 2) {
-      return GetSearch(_setIndex);
+      return GetSearch(_setIndex, widget._setLogged);
     } else {
       return Container();
     }
@@ -57,14 +57,14 @@ class _AppetitState extends State<Appetit> {
         debugShowCheckedModeBanner: false,
         home: SafeArea(
           child: Scaffold(
-            backgroundColor: Color(0xff272727),
+            backgroundColor: DialogueBoxState.isSelected[1] ? Color(0xff272727) : Color(0xffECFAFF),
             body: Column(
               children: [
                 Expanded(
                   child: Stack(
                     children: [
                       _changeActivity(i),
-                      Header(widget._setLogged),
+                      Header(_setIndex, widget._setLogged),
                     ],
                   ),
                 ),

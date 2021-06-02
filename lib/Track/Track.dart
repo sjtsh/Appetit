@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../Reputation/Heading.dart';
 import '../Reputation/ProgressBar.dart';
 import 'Timer.dart';
 import 'TrackCard.dart';

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:appetit/DATABASE/Content.dart';
+import 'package:appetit/DialogueBox/DialogueBox.dart';
 import 'package:appetit/Track/Timer.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
@@ -16,8 +17,8 @@ class ProgressBar extends StatefulWidget {
 
 class ProgressBarState extends State<ProgressBar> {
 
-  var minutes;
-  var seconds;
+  var minutes = TimerState.minutes;
+  var seconds = TimerState.seconds;
   static var timer;
   var oneSec = Duration(seconds: 1);
 
@@ -27,7 +28,7 @@ class ProgressBarState extends State<ProgressBar> {
     timer = Timer.periodic(
       oneSec,
       (timer) {
-        setState(() {
+        if(mounted)setState(() {
           timeRemaining = timeRemaining;
           minutes = TimerState.minutes;
           seconds = TimerState.seconds;
@@ -45,20 +46,20 @@ class ProgressBarState extends State<ProgressBar> {
       width: 150,
       height: 150,
       decoration: BoxDecoration(
-        color: Color(0xff272727),
+        color: DialogueBoxState.isSelected[1] ? Color(0xff272727) : Color(0xffECFAFF),
         borderRadius: BorderRadius.circular(100),
       ),
       child: SfRadialGauge(axes: [
         RadialAxis(
           minimum: 0,
-          maximum: widget.rep ? 1000 : timeRemaining * 60,
+          maximum: widget.rep ? 1000 : (timeRemaining * 60),
           showLabels: false,
           showTicks: false,
           startAngle: 270,
           endAngle: 270,
           axisLineStyle: AxisLineStyle(
             thickness: 0.5,
-            color: const Color(0xff494949),
+            color: DialogueBoxState.isSelected[1]? Color(0xff494949): Colors.white,
             thicknessUnit: GaugeSizeUnit.factor,
           ),
           pointers: <GaugePointer>[
@@ -72,7 +73,7 @@ class ProgressBarState extends State<ProgressBar> {
                 ],
               ),
               value:
-                  widget.rep ? rp : timeRemaining * 60 - (minutes * 60 + seconds) + 0.0,
+                  widget.rep ? rp : (timeRemaining * 60) - ((minutes * 60) + seconds) + 0.0,
               width: 0.5,
               sizeUnit: GaugeSizeUnit.factor,
               animationType: AnimationType.bounceOut,

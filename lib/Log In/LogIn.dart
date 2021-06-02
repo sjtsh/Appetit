@@ -1,10 +1,8 @@
-import 'package:appetit/DATABASE/Content.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'Content.dart';
-import 'CredLogIn.dart';
-import 'SignButton.dart';
 
 class LogIn extends StatelessWidget {
   final Function _loggedIn;
@@ -36,7 +34,13 @@ class LogIn extends StatelessWidget {
                   height: 700,
                   width: 700,
                   decoration: BoxDecoration(
-                    boxShadow: boxShadowConsist,
+                    boxShadow: const [
+                      BoxShadow(
+                          color: Color(0x66000000),
+                          blurRadius: 10,
+                          offset: Offset(0, 0),
+                          spreadRadius: 10)
+                    ],
                     shape: BoxShape.circle,
                     color: Color(0xff434343),
                   ),

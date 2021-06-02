@@ -1,3 +1,5 @@
+
+import 'package:appetit/DialogueBox/DialogueBox.dart';
 import 'package:flutter/material.dart';
 
 class Labels extends StatelessWidget {
@@ -15,7 +17,7 @@ class Labels extends StatelessWidget {
             padding: const EdgeInsets.only(top: 8.0, left: 20),
             child: Text(label,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: DialogueBoxState.isSelected[1] ? Colors.white : Colors.black,
                   fontSize: 18,
                 )),
           ),
@@ -26,7 +28,7 @@ class Labels extends StatelessWidget {
           child: Text(
             value,
             style: TextStyle(
-              color: Colors.white.withOpacity(0.5),
+              color: DialogueBoxState.isSelected[1] ? Colors.white.withOpacity(0.5) : Colors.black.withOpacity(0.5),
               fontSize: 18,
             ),
           ),

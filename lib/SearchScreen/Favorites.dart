@@ -1,18 +1,20 @@
+
 import 'package:appetit/DATABASE/Content.dart';
 import 'package:appetit/DATABASE/GetRestaurants.dart';
-import 'package:appetit/ProductDetail/Restaurant.dart';
+import 'package:appetit/DialogueBox/DialogueBox.dart';
 import 'package:flutter/material.dart';
 
 class Favorites extends StatelessWidget {
 
   final Function _setIndex;
+  final Function _setLogged;
 
-  Favorites(this._setIndex);
+  Favorites(this._setIndex, this._setLogged);
 
   List<Widget> _favouriteResult(){
     List<Widget> results = [];
     for(int i=0; i<favourites.length; i++){
-      results.add(GetRestaurants(favourites[i], _setIndex));
+      results.add(GetRestaurants(favourites[i], _setIndex, _setLogged, (String i){}));
     }
     return results;
   }
@@ -29,7 +31,7 @@ class Favorites extends StatelessWidget {
                 Text(
                   "Favorites",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: DialogueBoxState.isSelected[1] ? Colors.white : Colors.black,
                     fontSize: 20,
                   ),
                 ),

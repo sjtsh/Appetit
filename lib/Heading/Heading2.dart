@@ -1,9 +1,13 @@
+
+import 'package:appetit/DialogueBox/DialogueBox.dart';
 import 'package:appetit/MapScreen/MapScreen.dart';
 import 'package:flutter/material.dart';
 
 class Heading2 extends StatelessWidget {
+
+  final Function _setIndex;
   final Function _setLogged;
-  Heading2(this._setLogged);
+  Heading2(this._setIndex, this._setLogged);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +18,7 @@ class Heading2 extends StatelessWidget {
           Text(
             "Featured",
             style: TextStyle(
-              color: Colors.white,
+              color: DialogueBoxState.isSelected[1] ? Colors.white : Colors.black,
               fontSize: 20,
             ),
           ),
@@ -26,12 +30,12 @@ class Heading2 extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MapScreen(_setLogged)),
+                MaterialPageRoute(builder: (context) => MapScreen(_setIndex, _setLogged)),
               );
             },
             child: Icon(
-              Icons.location_on_outlined,
-              color: Colors.white,
+              Icons.location_on,
+              color: DialogueBoxState.isSelected[1] ? Colors.white : Colors.black,
             ),
           ),
         ],

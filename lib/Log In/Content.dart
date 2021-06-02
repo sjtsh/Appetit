@@ -55,13 +55,12 @@ class Content extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                height: 100,
+                height: 150,
               ),
               CredLogIn(),
-              SizedBox(
-                height: 40,
-              ),
+              Expanded(child: Container()),
               SignButton(_loggedIn),
+              Expanded(child: Container()),
             ],
           ),
         ),

@@ -1,4 +1,6 @@
+
 import 'package:appetit/DATABASE/Content.dart';
+import 'package:appetit/DialogueBox/DialogueBox.dart';
 import 'package:appetit/Reputation/Labels.dart';
 import 'package:appetit/Reputation/ProfileRep.dart';
 import 'package:appetit/Reputation/ReputationButton.dart';
@@ -17,16 +19,26 @@ class TrackCard extends StatelessWidget {
       height: 280,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Color(0xff272727),
-        boxShadow: boxShadowPrimary,
-        border: Border.all(color: Colors.black, width: 1),
+        color: DialogueBoxState.isSelected[1] ? Color(0xff272727) : Color(0xffffffff),
+        boxShadow: DialogueBoxState.isSelected[1]
+            ? const [
+          BoxShadow(
+              color: Color(0xff000000), blurRadius: 10, offset: Offset(0, 10))
+        ]
+            : const [
+          BoxShadow(
+              color: Color(0x40000000), blurRadius: 10, offset: Offset(0, 10))
+        ],
+        border: DialogueBoxState.isSelected[1]
+            ? Border.all(color: Colors.black, width: 1)
+            : Border.all(color: Colors.white),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
         children: [
           Row(
             children: [
-              ProfileRep(AssetImage("icons/emo2.png"), Color(0xffFFECFF)),
+              ProfileRep(AssetImage("icons/emo2.png"), DialogueBoxState.isSelected[1]? Color(0xffFFECFF): Color(0xffE33EE7)),
               Container(
               margin: EdgeInsets.only(top:25),
                 child: Column(
@@ -34,7 +46,7 @@ class TrackCard extends StatelessWidget {
                     Text(
                       "Emma on her way",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: DialogueBoxState.isSelected[1] ? Colors.white : Colors.black,
                         fontSize: 20,
                       ),
                     ),
@@ -43,7 +55,7 @@ class TrackCard extends StatelessWidget {
                       child: Text(
                         "with your $delivering",
                         style: TextStyle(
-                          color: Colors.white.withOpacity(0.5),
+                          color: DialogueBoxState.isSelected[1] ? Colors.white.withOpacity(0.5) : Colors.black.withOpacity(0.5),
                           fontSize: 16,
                         ),
                       ),
@@ -56,7 +68,7 @@ class TrackCard extends StatelessWidget {
           Expanded(child: Container()),
           Labels("RP: ", newRP.toString() + " points"),
           Labels("Cost:  ", "\$" + newCost.toString()),
-          Labels("Status: ", "PAID!"),
+          Labels("Status: ", payStatus ),
           Expanded(child: Container()),
           ReputationButton(false, _setIndex),
           Expanded(child: Container())

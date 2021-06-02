@@ -2,7 +2,6 @@ import 'package:appetit/DATABASE/GetGrid.dart';
 import 'package:appetit/DATABASE/GetProductLarge.dart';
 import 'package:appetit/Heading/Heading1.dart';
 import 'package:appetit/Heading/Heading2.dart';
-import 'package:appetit/Product/ProductLarge.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -23,7 +22,7 @@ class HomeScreen extends StatelessWidget {
           ),
           Heading1(),
           GetProductLarge(_setIndex, _setLogged),
-          Heading2(_setLogged),
+          Heading2(_setIndex, _setLogged),
           GetGrid(_setIndex, _setLogged),
         ],
       ),

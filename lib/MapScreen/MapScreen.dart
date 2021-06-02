@@ -7,8 +7,9 @@ import 'package:location/location.dart';
 
 class MapScreen extends StatefulWidget {
 
+  final Function _setIndex;
   final Function  _setLogged;
-  MapScreen(this._setLogged);
+  MapScreen(this._setIndex, this._setLogged);
 
   @override
   _MapScreenState createState() => _MapScreenState();
@@ -97,7 +98,7 @@ class _MapScreenState extends State<MapScreen> {
                   // onLongPress: _addMarker,
                   // myLocationEnabled: true,
               ),
-              Header(widget._setLogged),
+              Header(widget._setIndex, widget._setLogged),
             ],
           ),
         );

@@ -1,6 +1,5 @@
-import 'package:appetit/DATABASE/Content.dart';
+
 import 'package:appetit/DATABASE/GetRestaurants.dart';
-import 'package:appetit/ProductDetail/Restaurant.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +10,9 @@ class SearchScreen extends StatefulWidget {
 
   final List products;
   final Function _setIndex;
-  SearchScreen(this.products, this._setIndex);
+  final Function _setLogged;
+
+  SearchScreen(this.products, this._setIndex, this._setLogged);
 
   @override
   _SearchScreenState createState() => _SearchScreenState();
@@ -27,7 +28,7 @@ class _SearchScreenState extends State<SearchScreen> {
       if (widget.products[i].data()['Name'] == input) {
         print("found");
         setState(() {
-          results.add(GetRestaurants(i, widget._setIndex));
+          results.add(GetRestaurants(i, widget._setIndex, widget._setLogged, (String i){}));
           change = true;
         });
       }
@@ -40,7 +41,7 @@ class _SearchScreenState extends State<SearchScreen> {
         children: results,
       );
     } else {
-      return Favorites(widget._setIndex);
+      return Favorites(widget._setIndex, widget._setLogged);
     }
   }
 

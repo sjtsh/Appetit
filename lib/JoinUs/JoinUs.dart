@@ -1,4 +1,4 @@
-import 'package:appetit/DATABASE/Content.dart';
+
 import 'package:flutter/material.dart';
 
 import 'Content.dart';
@@ -19,7 +19,13 @@ class JoinUs extends StatelessWidget {
             height: 700,
             width: 700,
             decoration: BoxDecoration(
-              boxShadow: boxShadowConsist,
+              boxShadow: const [
+                BoxShadow(
+                    color: Color(0x66000000),
+                    blurRadius: 10,
+                    offset: Offset(0, 0),
+                    spreadRadius: 10)
+              ],
               shape: BoxShape.circle,
               color: Color(0xff434343),
             ),
@@ -32,7 +38,13 @@ class JoinUs extends StatelessWidget {
             width: 460,
             height: 400,
             decoration: BoxDecoration(
-              boxShadow: boxShadowConsist,
+              boxShadow: const [
+                BoxShadow(
+                    color: Color(0x66000000),
+                    blurRadius: 10,
+                    offset: Offset(0, 0),
+                    spreadRadius: 10)
+              ],
               shape: BoxShape.circle,
               color: Color(0xff434343),
             ),

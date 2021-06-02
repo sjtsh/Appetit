@@ -1,11 +1,11 @@
 import 'package:appetit/DATABASE/GetRestaurants.dart';
+import 'package:appetit/DialogueBox/DialogueBox.dart';
 import 'package:appetit/ProductDetail/Header.dart';
 import 'package:flutter/material.dart';
 
 import 'Image.dart';
-import 'Restaurant.dart';
 
-class ProductDetail extends StatelessWidget {
+class ProductDetail extends StatefulWidget {
   final String img;
   final Function _setIndex;
   final Function _setLogged;
@@ -13,10 +13,25 @@ class ProductDetail extends StatelessWidget {
   ProductDetail(this.img, this._setIndex, this._setLogged);
 
   @override
+  State<ProductDetail> createState() => _ProductDetailState();
+}
+
+class _ProductDetailState extends State<ProductDetail> {
+  String img = "";
+
+  void setImage(String image) {
+    setState(() {
+      img = image;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        color: Color(0xff272727),
+        color: DialogueBoxState.isSelected[1]
+            ? Color(0xff272727)
+            : Color(0xffECFAFF),
         child: Stack(
           children: [
             Container(
@@ -26,26 +41,32 @@ class ProductDetail extends StatelessWidget {
                   SizedBox(
                     height: 140,
                   ),
-                  DetailImage(img),
+                  img=="" ? DetailImage(widget.img): DetailImage(img),
                   GetRestaurants(
                     6,
-                    _setIndex,
+                    widget._setIndex,
+                    widget._setLogged,
+                    setImage,
                     condition: true,
                   ),
                   GetRestaurants(
                     5,
-                    _setIndex,
+                    widget._setIndex,
+                    widget._setLogged,
+                    setImage,
                     condition: true,
                   ),
                   GetRestaurants(
                     4,
-                    _setIndex,
+                    widget._setIndex,
+                    widget._setLogged,
+                    setImage,
                     condition: true,
                   ),
                 ],
               ),
             ),
-            Header(_setLogged),
+            Header(widget._setIndex, widget._setLogged),
           ],
         ),
       ),

@@ -1,16 +1,19 @@
+
+import 'package:appetit/DialogueBox/DialogueBox.dart';
 import 'package:appetit/Header/HeaderPartition.dart';
 import 'package:flutter/material.dart';
 
 class Header extends StatelessWidget {
 
+  final Function _setIndex;
   final Function _setLogged;
-  Header(this._setLogged);
+  Header(this._setIndex, this._setLogged);
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        HeaderPartition(_setLogged),
+        HeaderPartition(_setIndex, _setLogged),
         Positioned(
           height: 50,
           left: 30,
@@ -22,7 +25,7 @@ class Header extends StatelessWidget {
             },
             child: Icon(
               Icons.arrow_back_ios_rounded,
-              color: Colors.white.withOpacity(0.5),
+              color: DialogueBoxState.isSelected[1] ? Colors.white.withOpacity(0.5) : Colors.black.withOpacity(0.5),
             ),
           ),
         ),

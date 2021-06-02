@@ -1,21 +1,24 @@
-import 'package:appetit/DATABASE/Content.dart';
+
+import 'package:appetit/HomeScreen/HomeScreen.dart';
+import 'package:appetit/LoadMoney/eSewaLoad.dart';
+import 'package:appetit/NavBar/NavBar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'ProfileDialog.dart';
 
 class DialogueBox extends StatefulWidget {
 
   final Function _setLogged;
+  final Function _setIndex;
 
-  DialogueBox(this._setLogged);
+  DialogueBox(this._setIndex, this._setLogged);
 
   @override
-  _DialogueBoxState createState() => _DialogueBoxState();
+  DialogueBoxState createState() => DialogueBoxState();
 }
 
-class _DialogueBoxState extends State<DialogueBox> {
-  var _isSelected = [false, true];
+class DialogueBoxState extends State<DialogueBox> {
+  static var isSelected = [false, true];
 
   @override
   Widget build(BuildContext context) {
@@ -35,30 +38,25 @@ class _DialogueBoxState extends State<DialogueBox> {
             ),
           ],
           color: Colors.blueGrey,
-          isSelected: _isSelected,
-          selectedColor: Colors.white,
-          selectedBorderColor: Colors.white,
-          onPressed: (int i) {},
-          borderColor: Colors.white,
+          isSelected: isSelected,
+          selectedColor: DialogueBoxState.isSelected[1] ? Colors.white : Colors.black,
+          selectedBorderColor: DialogueBoxState.isSelected[1] ? Colors.white : Colors.black,
+          onPressed: (int i) {
+            setState(() {
+              if (i==0) {
+                isSelected = [true, false];
+              }else{
+                isSelected = [false, true];
+              }
+              widget._setIndex(1);
+              NavBarState.onItemTapped(1);
+            });
+          },
+          borderColor: DialogueBoxState.isSelected[1] ? Colors.white : Colors.black,
           borderRadius: BorderRadius.circular(20),
           constraints: BoxConstraints.tightFor(width: 80, height: 50),
         ),
-        MaterialButton(
-            onPressed: () {},
-            child: Container(
-            decoration: BoxDecoration(
-              boxShadow: boxShadowPrimary,
-              borderRadius: BorderRadius.circular(20),
-              color: Color(0xff00A743),
-            ),
-            margin: EdgeInsets.only(top: 20),
-            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-              child: Text(
-                "Load Money",
-                style: TextStyle(
-                color: Colors.white, fontSize: 18,),
-              ),
-            )),
+        eSewaLoad(),
         MaterialButton(
             onPressed: () async{
                 await FirebaseAuth.instance.signOut();
@@ -67,7 +65,15 @@ class _DialogueBoxState extends State<DialogueBox> {
             child: Container(
               width: 160,
               decoration: BoxDecoration(
-                boxShadow: boxShadowPrimary,
+                boxShadow: DialogueBoxState.isSelected[1]
+                    ? const [
+                  BoxShadow(
+                      color: Color(0xff000000), blurRadius: 10, offset: Offset(0, 10))
+                ]
+                    : const [
+                  BoxShadow(
+                      color: Color(0x40000000), blurRadius: 10, offset: Offset(0, 10))
+                ],
                 borderRadius: BorderRadius.circular(20),
                 color: Color(0xff2E434B),
               ),

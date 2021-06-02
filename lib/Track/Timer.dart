@@ -1,3 +1,4 @@
+
 import 'package:appetit/DATABASE/Content.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -26,7 +27,7 @@ class TimerState extends State<TimerWid> {
     timer = Timer.periodic(
       oneSec,
       (timer) {
-        setState(() {
+        if(mounted)setState(() {
           if (seconds > 0) {
             seconds--;
           } else {
@@ -70,7 +71,14 @@ class TimerState extends State<TimerWid> {
           ),
         ),
         ShaderMask(
-          shaderCallback: (bounds) => linearGradientTrack.createShader(
+          shaderCallback: (bounds) => LinearGradient(
+            colors: [
+              Color(0xff00D1FF),
+              Color(0xffFA00FF),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ).createShader(
             Rect.fromLTWH(0, 0, bounds.width, bounds.height),
           ),
           child: Text(

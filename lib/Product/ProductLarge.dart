@@ -1,14 +1,16 @@
-import 'package:appetit/DATABASE/Content.dart';
+import 'package:appetit/DialogueBox/DialogueBox.dart';
 import 'package:appetit/ProductDetail/ProductDetail.dart';
 import 'package:flutter/material.dart';
 
 class ProductLarge extends StatelessWidget {
 
-  final List products;
+  final String caption;
+  final int price;
+  final String img;
   final Function _setIndex;
   final Function _setLogged;
 
-  ProductLarge(this.products, this._setIndex, this._setLogged);
+  ProductLarge(this.caption, this.price, this.img, this._setIndex, this._setLogged);
 
   @override
   Widget build(BuildContext context) {
@@ -19,16 +21,26 @@ class ProductLarge extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => ProductDetail(products[0].data()['Image'], _setIndex, _setLogged)),
+            MaterialPageRoute(builder: (context) => ProductDetail(img, _setIndex, _setLogged)),
           );
         },
         child: Container(
           height: 120,
           decoration: BoxDecoration(
-            color: Color(0xff272727),
+            color: DialogueBoxState.isSelected[1] ? Color(0xff272727) : Color(0xffffffff),
             borderRadius: BorderRadius.all(Radius.circular(20)),
-            border: Border.all(color: Colors.black, width: 1),
-            boxShadow: boxShadowPrimary,
+            border: DialogueBoxState.isSelected[1]
+                ? Border.all(color: Colors.black, width: 1)
+                : Border.all(color: Colors.white),
+            boxShadow: DialogueBoxState.isSelected[1]
+                ? const [
+              BoxShadow(
+                  color: Color(0xff000000), blurRadius: 10, offset: Offset(0, 10))
+            ]
+                : const [
+              BoxShadow(
+                  color: Color(0x40000000), blurRadius: 10, offset: Offset(0, 10))
+            ],
           ),
           child: Row(
             children: [
@@ -36,7 +48,7 @@ class ProductLarge extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Hero(
                   tag: "product",
-                  child: Image.network(products[0].data()['Image'], width: 70,)
+                  child: Image.network(img, width: 70,)
                 ),
               ),
               Column(
@@ -44,18 +56,18 @@ class ProductLarge extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    products[0].data()['Caption'],
+                    caption,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: DialogueBoxState.isSelected[1] ? Colors.white : Colors.black,
                       fontSize: 20,
                     ),
                   ),
                   Container(
                     padding: EdgeInsets.only(top: 5),
                     child: Text(
-                      "\$" + products[0].data()['Price'].toString(),
+                      "\$" + price.toString(),
                       style: TextStyle(
-                        color: Colors.white.withOpacity(0.5),
+                        color: DialogueBoxState.isSelected[1] ? Colors.white.withOpacity(0.5) : Colors.black.withOpacity(0.5),
                         fontSize: 15,
                       ),
                     ),
@@ -65,7 +77,7 @@ class ProductLarge extends StatelessWidget {
                     child: Text(
                       "16min",
                       style: TextStyle(
-                        color: Colors.white.withOpacity(0.5),
+                        color: DialogueBoxState.isSelected[1] ? Colors.white.withOpacity(0.5) : Colors.black.withOpacity(0.5),
                         fontSize: 15,
                       ),
                     ),

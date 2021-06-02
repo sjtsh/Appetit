@@ -1,3 +1,5 @@
+
+import 'package:appetit/DialogueBox/DialogueBox.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +13,7 @@ class Heading1 extends StatelessWidget {
         Text(
           "Hi " + (user!.displayName!.split(" ")[0]) + ",",
           style: TextStyle(
-            color: Colors.white,
+            color: DialogueBoxState.isSelected[1] ? Colors.white : Colors.black,
             fontSize: 40,
           ),
         ),
@@ -20,7 +22,7 @@ class Heading1 extends StatelessWidget {
           child: Text(
             "Hungry? Grab a Diet",
             style: TextStyle(
-              color: Colors.white.withOpacity(0.5),
+              color: DialogueBoxState.isSelected[1] ? Colors.white.withOpacity(0.5) : Colors.black.withOpacity(0.5),
               fontSize: 20,
             ),
           ),

@@ -1,3 +1,5 @@
+
+import 'package:appetit/DialogueBox/DialogueBox.dart';
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -21,11 +23,11 @@ class NavBarState extends State<NavBar> {
   Widget build(BuildContext context) {
     return Container(
       child: CustomNavigationBar(
-        strokeColor: Colors.black,
+        strokeColor: DialogueBoxState.isSelected[1]? Colors.black: Colors.white,
         iconSize: 30,
         currentIndex: currentIndex,
-        selectedColor: Colors.black,
-        backgroundColor: Colors.white.withOpacity(0.1),
+        selectedColor: DialogueBoxState.isSelected[1]? Colors.black: Colors.white,
+        backgroundColor: DialogueBoxState.isSelected[1] ? Colors.white.withOpacity(0.1) : Color(0xff3CC1EB).withOpacity(0.5),
         borderRadius: Radius.circular(20),
         onTap: (int i) {
           print("clicked");

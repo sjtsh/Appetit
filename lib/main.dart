@@ -1,30 +1,25 @@
 import 'package:flutter/material.dart';
 
 import 'Appetit.dart';
-import 'ConstructionScreen/TestScreen.dart';
 import 'DATABASE/Content.dart';
 import 'Log In/AndroidAuthProvider.dart';
 import 'NotAppetit.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await AuthProvider().initialize();
 
-   runApp(App());
-
+  runApp(App());
 }
 
 class App extends StatefulWidget {
-
-
   @override
   State<App> createState() => _AppState();
 }
 
 class _AppState extends State<App> {
-
-  void _setLogged(bool _loggedIn){
+  void _setLogged(bool _loggedIn) {
     setState(() {
       loggedIn = _loggedIn;
     });
@@ -35,5 +30,3 @@ class _AppState extends State<App> {
     return loggedIn ? Appetit(_setLogged) : NotAppetit(_setLogged);
   }
 }
-
-

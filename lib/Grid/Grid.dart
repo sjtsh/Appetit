@@ -1,6 +1,5 @@
 import 'package:appetit/Product/ProductSmall.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Grid extends StatelessWidget {
   final List products;
