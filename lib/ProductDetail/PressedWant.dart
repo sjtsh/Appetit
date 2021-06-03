@@ -2,15 +2,15 @@ import 'dart:ui';
 
 import 'package:appetit/DialogueBox/BalanceDialog.dart';
 import 'package:appetit/DialogueBox/DialogueBox.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class PressedWant extends StatefulWidget {
 
-  final List products;
+  final DocumentSnapshot products;
   final Function _setIndex;
   final bool condition;
-  final int index;
-  PressedWant(this.products, this._setIndex, this.index, this.condition);
+  PressedWant(this.products, this._setIndex, this.condition);
 
   @override
   State<PressedWant> createState() => _PressedWantState();
@@ -59,7 +59,7 @@ class _PressedWantState extends State<PressedWant>
                 width: 250,
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: BalanceDialog(widget.products, widget._setIndex, widget.index, widget.condition),
+                  child: BalanceDialog(widget.products, widget._setIndex, widget.condition),
                 ),
               ),
             ),

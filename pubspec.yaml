@@ -35,6 +35,8 @@ dependencies:
   flutter_signin_button:
   google_sign_in:
   cloud_firestore:
+  database:
+  search:
 #  flutter_facebook_auth:
 
   # The following adds the Cupertino Icons font to your application.

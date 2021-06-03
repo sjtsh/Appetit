@@ -1,4 +1,5 @@
 import 'package:appetit/Grid/Grid.dart';
+import 'package:appetit/Skeleton/SkeletonGrid.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -13,15 +14,13 @@ class GetGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance
-          .collection("Products")
+          .collection("Categories")
           .snapshots(),
       builder: (context, snapshot){
         if(snapshot.hasData){
           return Grid(snapshot.data!.docs, _setIndex, _setLogged);
         }
-        return Center(
-          child: CircularProgressIndicator(),
-        );
+        return SkeletonGrid();
       },
     );
   }

@@ -2,18 +2,18 @@ import 'package:appetit/DATABASE/Content.dart';
 import 'package:appetit/LoadMoney/eSewaLoad.dart';
 import 'package:appetit/NavBar/NavBar.dart';
 import 'package:appetit/Track/Timer.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'DialogueBox.dart';
 
 class BalanceDialog extends StatefulWidget {
 
-  final List products;
+  final DocumentSnapshot products;
   final Function _setIndex;
-  final int index;
   final bool condition;
 
-  BalanceDialog(this.products, this._setIndex, this.index, this.condition);
+  BalanceDialog(this.products, this._setIndex, this.condition);
 
   @override
   _BalanceDialogState createState() => _BalanceDialogState();
@@ -38,8 +38,8 @@ class _BalanceDialogState extends State<BalanceDialog> {
             }
             delivered = false;
             payStatus = "UNPAID!";
-            newCost = widget.products[widget.index].data()['Price'];
-            delivering = widget.products[widget.index].data()['Name'];
+            newCost = (widget.products.data() as dynamic).data()['Price'];
+            delivering = (widget.products.data() as dynamic).data()['Name'];
             NavBarState.onItemTapped(0);
             TimerState.stopTimer();
             widget._setIndex(0);

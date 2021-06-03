@@ -1,4 +1,5 @@
 import 'package:appetit/SearchScreen/SearchScreen.dart';
+import 'package:appetit/Skeleton/SkeletonRestaurant.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -19,9 +20,7 @@ class GetSearch extends StatelessWidget {
         if(snapshot.hasData){
           return SearchScreen(snapshot.data!.docs, _setIndex, _setLogged);
         }
-        return Center(
-          child: CircularProgressIndicator(),
-        );
+        return SkeletonRestaurant();
       },
     );
   }

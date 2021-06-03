@@ -1,6 +1,6 @@
 
 import 'package:appetit/DATABASE/Content.dart';
-import 'package:appetit/DATABASE/GetRestaurants.dart';
+import 'package:appetit/DATABASE/GetFavourites.dart';
 import 'package:appetit/DialogueBox/DialogueBox.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +14,7 @@ class Favorites extends StatelessWidget {
   List<Widget> _favouriteResult(){
     List<Widget> results = [];
     for(int i=0; i<favourites.length; i++){
-      results.add(GetRestaurants(favourites[i], _setIndex, _setLogged, (String i){}));
+      results.add(GetFavourites(favourites[i], _setIndex, _setLogged, (String i){}));
     }
     return results;
   }
@@ -44,6 +44,7 @@ class Favorites extends StatelessWidget {
                 ),
               ],
             ),
+            SizedBox(height: 10,),
             Expanded(
               child: ListView(
               children: _favouriteResult(),

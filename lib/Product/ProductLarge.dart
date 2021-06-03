@@ -1,5 +1,5 @@
+import 'package:appetit/DATABASE/GetProductDetail.dart';
 import 'package:appetit/DialogueBox/DialogueBox.dart';
-import 'package:appetit/ProductDetail/ProductDetail.dart';
 import 'package:flutter/material.dart';
 
 class ProductLarge extends StatelessWidget {
@@ -21,7 +21,7 @@ class ProductLarge extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => ProductDetail(img, _setIndex, _setLogged)),
+            MaterialPageRoute(builder: (context) => GetProductDetail("pizza", img, _setIndex, _setLogged)),
           );
         },
         child: Container(

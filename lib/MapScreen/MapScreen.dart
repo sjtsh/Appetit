@@ -1,6 +1,7 @@
 
 import 'package:appetit/DATABASE/Content.dart';
 import 'package:appetit/ProductDetail/Header.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
@@ -26,6 +27,8 @@ class _MapScreenState extends State<MapScreen> {
   var _origin;
   List<Marker> _restaurants = [];
   Location _location =  Location();
+  List<LatLng> _locations = [];
+  List _locationsName = [];
 
   @override
   void dispose() {
@@ -50,6 +53,16 @@ class _MapScreenState extends State<MapScreen> {
   void _onMapCreated(GoogleMapController controller)
   {
     _googleMapController = controller;
+    FirebaseFirestore.instance
+        .collection('Restaurants')
+        .get()
+        .then((QuerySnapshot querySnapshot) {
+      querySnapshot.docs.forEach((doc) {
+        GeoPoint geoPoint = doc["Location"];
+        _locations.add(LatLng(geoPoint.latitude, geoPoint.longitude));
+        _locationsName.add(doc["Name"]);
+      });
+    });
     _location.onLocationChanged.listen((l) {
       _googleMapController.animateCamera(
         CameraUpdate.newCameraPosition(
@@ -65,13 +78,14 @@ class _MapScreenState extends State<MapScreen> {
                 BitmapDescriptor.hueRed),
             position: LatLng(l.latitude as double, l.longitude as double),
           );
-          for(int i=0; i<locations.length; i++){
+          for(int i=0; i<_locations.length; i++){
+            print('marker i added');
             _restaurants.add(Marker(
-              markerId: MarkerId(locationsID[i]),
-              infoWindow: InfoWindow(title: locationsID[i]),
+              markerId: MarkerId(_locationsName[i]),
+              infoWindow: InfoWindow(title: "Appetit $i: " + _locationsName[i]),
               icon: BitmapDescriptor.defaultMarkerWithHue(
                   BitmapDescriptor.hueBlue),
-              position: locations[i],
+              position: _locations[i],
             ));
           }
         });

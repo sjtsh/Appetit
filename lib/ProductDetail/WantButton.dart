@@ -2,18 +2,18 @@ import 'package:appetit/DATABASE/Content.dart';
 import 'package:appetit/DialogueBox/DialogueBox.dart';
 import 'package:appetit/NavBar/NavBar.dart';
 import 'package:appetit/Track/Timer.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'PressedWant.dart';
 
 class WantButton extends StatelessWidget {
-  final List products;
+  final DocumentSnapshot products;
   final bool condition;
-  final int index;
   final Function _setIndex;
   final bool paid;
 
-  WantButton(this.products, this.index, this._setIndex, this.condition,
+  WantButton(this.products, this._setIndex, this.condition,
       {this.paid = true});
 
   @override
@@ -32,24 +32,24 @@ class WantButton extends StatelessWidget {
         child: MaterialButton(
           splashColor: Colors.black,
           onPressed: () {
-            if(balance < products[index].data()['Price']){
+            if(balance < (products.data() as dynamic)['Price']){
               showDialog(
                 context: context,
-                builder: (_) => PressedWant(products, _setIndex, index, condition),
+                builder: (_) => PressedWant(products, _setIndex, condition),
               );
             }else{
               if (condition) {
                 Navigator.pop(context);
               }
               delivered = false;
-              newCost = products[index].data()['Price'];
-              newRP = (products[index].data()['Price'] * 0.2).round() * 10;
+              newCost = (products.data() as dynamic)['Price'];
+              newRP = ((products.data() as dynamic)['Price'] * 0.2).round() * 10;
               rp += newRP;
               totalRP += newRP;
               payStatus = "PAID!";
-              delivering = products[index].data()['Name'];
+              delivering = (products.data() as dynamic)['Name'];
               NavBarState.onItemTapped(0);
-              balance -= products[index].data()['Price'];
+              balance -= (products.data() as dynamic)['Price'];
               TimerState.stopTimer();
               if(rp >= 1000){
                 rp -= 1000;

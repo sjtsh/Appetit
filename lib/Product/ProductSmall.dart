@@ -1,16 +1,17 @@
 
+import 'package:appetit/DATABASE/GetProductDetail.dart';
 import 'package:appetit/DialogueBox/DialogueBox.dart';
-import 'package:appetit/ProductDetail/ProductDetail.dart';
 import 'package:flutter/material.dart';
 
 class ProductSmall extends StatelessWidget {
 
 
   final String img;
+  final String category;
   final Function _setIndex;
   final Function _setLogged;
 
-  ProductSmall(this.img, this._setIndex, this._setLogged);
+  ProductSmall(this.img, this.category, this._setIndex, this._setLogged);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ class ProductSmall extends StatelessWidget {
             onPressed: (){
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProductDetail(img, _setIndex, _setLogged)),
+                MaterialPageRoute(builder: (context) => GetProductDetail(category, img, _setIndex, _setLogged)),
               );
             },
           ),

@@ -1,22 +1,25 @@
 import 'package:appetit/DATABASE/GetRestaurants.dart';
 import 'package:appetit/DialogueBox/DialogueBox.dart';
 import 'package:appetit/ProductDetail/Header.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'Image.dart';
 
 class ProductDetail extends StatefulWidget {
-  final String img;
+  final AsyncSnapshot<QuerySnapshot> snapshot;
   final Function _setIndex;
   final Function _setLogged;
+  final String img;
 
-  ProductDetail(this.img, this._setIndex, this._setLogged);
+  ProductDetail(this.snapshot, this.img, this._setIndex, this._setLogged);
 
   @override
   State<ProductDetail> createState() => _ProductDetailState();
 }
 
 class _ProductDetailState extends State<ProductDetail> {
+
   String img = "";
 
   void setImage(String image) {
@@ -36,32 +39,26 @@ class _ProductDetailState extends State<ProductDetail> {
           children: [
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
-              child: ListView(
+              child: Column(
                 children: [
                   SizedBox(
                     height: 140,
                   ),
-                  img=="" ? DetailImage(widget.img): DetailImage(img),
-                  GetRestaurants(
-                    6,
-                    widget._setIndex,
-                    widget._setLogged,
-                    setImage,
-                    condition: true,
-                  ),
-                  GetRestaurants(
-                    5,
-                    widget._setIndex,
-                    widget._setLogged,
-                    setImage,
-                    condition: true,
-                  ),
-                  GetRestaurants(
-                    4,
-                    widget._setIndex,
-                    widget._setLogged,
-                    setImage,
-                    condition: true,
+                  // DetailImage(img),
+                  img == "" ? DetailImage(widget.img): DetailImage(img),
+                  Expanded(
+                    child: ListView(
+                      children: widget.snapshot.data!.docs
+                          .map((DocumentSnapshot document) {
+                        return GetRestaurants(
+                          document,
+                          widget._setIndex,
+                          widget._setLogged,
+                          setImage,
+                          condition: true,
+                          );
+                      }).toList(),
+                    ),
                   ),
                 ],
               ),

@@ -1,25 +1,27 @@
-import 'package:appetit/DialogueBox/BalanceDialog.dart';
+
+import 'package:appetit/DATABASE/GetProductDetail.dart';
 import 'package:appetit/DialogueBox/DialogueBox.dart';
-import 'package:appetit/NavBar/NavBar.dart';
-import 'package:appetit/ProductDetail/ProductDetail.dart';
-import 'package:appetit/Track/Timer.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import 'package:appetit/DATABASE/Content.dart';
-
-import 'PressedWant.dart';
 import 'WantButton.dart';
 
-class Restaurant extends StatelessWidget {
-  final List products;
+class Restaurant extends StatefulWidget {
+  final DocumentSnapshot product;
+  final DocumentSnapshot restaurant;
   final Function _setIndex;
   final bool condition;
-  final int index;
   final Function setImage;
   final Function _setLogged;
 
-  Restaurant(this.products, this.index, this._setIndex, this._setLogged,
+  Restaurant(this.product, this.restaurant, this._setIndex, this._setLogged,
       this.condition, this.setImage);
+
+  @override
+  State<Restaurant> createState() => _RestaurantState();
+}
+
+class _RestaurantState extends State<Restaurant> {
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +29,18 @@ class Restaurant extends StatelessWidget {
       padding: const EdgeInsets.only(top: 15.0),
       child: MaterialButton(
         onPressed: () {
-          if (condition) {
-            setImage(products[index].data()['Image']);
+          if (widget.condition) {
+            widget.setImage((widget.product.data() as dynamic)['Image']);
           } else {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => ProductDetail(
-                        products[index].data()['Image'],
-                        _setIndex,
-                        _setLogged)));
+                    builder: (context) =>
+                        GetProductDetail(
+                            (widget.product.data() as dynamic)['CategoryID'],
+                            (widget.product.data() as dynamic)['Image'],
+                            widget._setIndex,
+                            widget._setLogged)));
           }
         },
         child: Container(
@@ -51,25 +55,25 @@ class Restaurant extends StatelessWidget {
                 : Border.all(color: Colors.white),
             boxShadow: DialogueBoxState.isSelected[1]
                 ? const [
-                    BoxShadow(
-                        color: Color(0xff000000),
-                        blurRadius: 10,
-                        offset: Offset(0, 10))
-                  ]
+              BoxShadow(
+                  color: Color(0xff000000),
+                  blurRadius: 10,
+                  offset: Offset(0, 10))
+            ]
                 : const [
-                    BoxShadow(
-                        color: Color(0x40000000),
-                        blurRadius: 10,
-                        offset: Offset(0, 10))
-                  ],
+              BoxShadow(
+                  color: Color(0x40000000),
+                  blurRadius: 10,
+                  offset: Offset(0, 10))
+            ],
           ),
           child: Row(
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: Image.network(
-                  products[index].data()['Image'],
-                  width: 100,
+                  (widget.product.data() as dynamic)['Image'],
+                  width: 70,
                   fit: BoxFit.fitHeight,
                 ),
               ),
@@ -80,7 +84,7 @@ class Restaurant extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      restaurants[index],
+                      (widget.restaurant.data() as dynamic)['Name'],
                       style: TextStyle(
                         color: DialogueBoxState.isSelected[1]
                             ? Colors.white
@@ -93,7 +97,8 @@ class Restaurant extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.only(top: 5),
                       child: Text(
-                        "\$" + products[index].data()['Price'].toString(),
+                        "\$" + (widget.product.data() as dynamic)['Price']
+                            .toString(),
                         style: TextStyle(
                           color: DialogueBoxState.isSelected[1]
                               ? Colors.white.withOpacity(0.5)
@@ -106,7 +111,7 @@ class Restaurant extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.only(top: 5),
                       child: Text(
-                        times[index],
+                        (widget.restaurant.data() as dynamic)['Time'].toString() + "min",
                         style: TextStyle(
                           color: DialogueBoxState.isSelected[1]
                               ? Colors.white.withOpacity(0.5)
@@ -120,7 +125,7 @@ class Restaurant extends StatelessWidget {
                 ),
               ),
               Expanded(child: Container()),
-              WantButton(products, index, _setIndex, condition),
+              WantButton(widget.product, widget._setIndex, widget.condition),
             ],
           ),
         ),

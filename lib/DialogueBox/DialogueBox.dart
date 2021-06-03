@@ -1,5 +1,4 @@
 
-import 'package:appetit/HomeScreen/HomeScreen.dart';
 import 'package:appetit/LoadMoney/eSewaLoad.dart';
 import 'package:appetit/NavBar/NavBar.dart';
 import 'package:firebase_auth/firebase_auth.dart';

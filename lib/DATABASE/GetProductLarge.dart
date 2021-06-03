@@ -1,4 +1,5 @@
 import 'package:appetit/Product/ProductLarge.dart';
+import 'package:appetit/Skeleton/SkeletonProductLarge.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -10,27 +11,28 @@ class GetProductLarge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var recommendation;
-    var product;
-    FirebaseFirestore.instance
-        .collection("Recommendation")
-        .doc("r1")
-        .get()
-        .then((DocumentSnapshot documentSnapshot) {
-      if (documentSnapshot.exists) {
-        recommendation = documentSnapshot.data();
-      }
-    });
-    FirebaseFirestore.instance
-        .collection("Products")
-        .doc(recommendation["ProductID"])
-        .get()
-        .then((DocumentSnapshot documentSnapshot) {
-      if (documentSnapshot.exists) {
-        product = documentSnapshot.data();
-      }
-    });
-    return ProductLarge(recommendation["Caption"], product!["Price"],
-        product["Image"], _setIndex, _setLogged);
+    CollectionReference products = FirebaseFirestore.instance.collection('Products');
+
+    return FutureBuilder<DocumentSnapshot>(
+      future: products.doc("p1").get(),
+      builder:
+          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+
+        if (snapshot.hasError) {
+          return Text("Something went wrong");
+        }
+
+        if (snapshot.hasData && !snapshot.data!.exists) {
+          return Text("Document does not exist");
+        }
+
+        if (snapshot.connectionState == ConnectionState.done) {
+          Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
+          return ProductLarge("Who wants Pizza?", data['Price'], data["Image"], _setIndex, _setLogged);
+        }
+
+        return SkeletonProductLarge();
+      },
+    );
   }
 }

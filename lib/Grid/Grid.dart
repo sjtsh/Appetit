@@ -19,7 +19,9 @@ class Grid extends StatelessWidget {
       SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
       itemBuilder: (BuildContext context, int index) {
         return ProductSmall(
-            products[index].data()['Image'], _setIndex, _setLogged);
+            products[index].data()['Image'],
+            products[index].data()['Name'],
+            _setIndex, _setLogged);
       },
     );
   }
