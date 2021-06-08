@@ -19,7 +19,8 @@ class Content extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 30),
               child: MaterialButton(
-                splashColor: Colors.black,
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
                 onPressed: () {
                   Navigator.pop(context);
                 },

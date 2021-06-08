@@ -19,7 +19,8 @@ class Header extends StatelessWidget {
           left: 30,
           top: 30,
           child: MaterialButton(
-            splashColor: null,
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             onPressed: () {
               Navigator.pop(context);
             },

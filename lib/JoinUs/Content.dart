@@ -49,6 +49,8 @@ class Content extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(bottom: 40, right: 10),
               child: MaterialButton(
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
                 onPressed: () {
                   Navigator.push(
                     context,

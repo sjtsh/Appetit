@@ -73,7 +73,7 @@ class ProgressBarState extends State<ProgressBar> {
                 ],
               ),
               value:
-                  widget.rep ? rp : (timeRemaining * 60) - ((minutes * 60) + seconds) + 0.0,
+                  widget.rep ? (rp + 0.0) : (timeRemaining * 60) - ((minutes * 60) + seconds) + 0.0,
               width: 0.5,
               sizeUnit: GaugeSizeUnit.factor,
               animationType: AnimationType.bounceOut,

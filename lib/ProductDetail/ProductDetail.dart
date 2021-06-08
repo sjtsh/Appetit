@@ -20,11 +20,13 @@ class ProductDetail extends StatefulWidget {
 
 class _ProductDetailState extends State<ProductDetail> {
 
-  String img = "";
+  bool condition = true;
+  var img;
 
   void setImage(String image) {
     setState(() {
       img = image;
+      condition = false;
     });
   }
 
@@ -37,31 +39,31 @@ class _ProductDetailState extends State<ProductDetail> {
             : Color(0xffECFAFF),
         child: Stack(
           children: [
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 140,
-                  ),
-                  // DetailImage(img),
-                  img == "" ? DetailImage(widget.img): DetailImage(img),
-                  Expanded(
-                    child: ListView(
-                      children: widget.snapshot.data!.docs
-                          .map((DocumentSnapshot document) {
-                        return GetRestaurants(
+            Column(
+              children: [
+                SizedBox(
+                  height: 140,
+                ),
+                // DetailImage(img),
+                condition == true ? DetailImage(widget.img): DetailImage(img),
+                Expanded(
+                  child: ListView(
+                    children: widget.snapshot.data!.docs
+                        .map((DocumentSnapshot document) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: GetRestaurants(
                           document,
                           widget._setIndex,
                           widget._setLogged,
                           setImage,
                           condition: true,
-                          );
-                      }).toList(),
-                    ),
+                          ),
+                      );
+                    }).toList(),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
             Header(widget._setIndex, widget._setLogged),
           ],

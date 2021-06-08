@@ -35,7 +35,7 @@ class HeaderPartition extends StatelessWidget {
           top: 50,
           right: 90,
           child: Text(
-            "\$" + (balance).toStringAsFixed(2),
+            "\$" + (balance).toString(),
             style: TextStyle(
               color: DialogueBoxState.isSelected[1] ? Colors.white : Colors.black,
               fontSize: 14,

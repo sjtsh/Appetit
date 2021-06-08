@@ -32,6 +32,8 @@ class SignButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         MaterialButton(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
           onPressed: () {
             _signInGoog();
           },
@@ -66,6 +68,8 @@ class SignButton extends StatelessWidget {
           ),
         ),
         MaterialButton(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
           onPressed: () {},
           child: Container(
             height: 70,

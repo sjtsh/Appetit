@@ -1,5 +1,6 @@
 import 'package:appetit/DATABASE/Content.dart';
 import 'package:appetit/DialogueBox/DialogueBox.dart';
+import 'package:appetit/File%20Handling/ReadWrite.dart';
 import 'package:appetit/NavBar/NavBar.dart';
 import 'package:appetit/Track/Timer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -30,7 +31,8 @@ class WantButton extends StatelessWidget {
                 : Border.all(color: Colors.black),
             borderRadius: BorderRadius.all(Radius.circular(20))),
         child: MaterialButton(
-          splashColor: Colors.black,
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
           onPressed: () {
             if(balance < (products.data() as dynamic)['Price']){
               showDialog(
@@ -55,6 +57,8 @@ class WantButton extends StatelessWidget {
                 rp -= 1000;
                 balance += 11;
               }
+              ReadWrite readWrite = ReadWrite();
+              readWrite.writeContents(balance.toStringAsFixed(2), rp.toString(), totalRP.toString());
               _setIndex(0);
             }
           },

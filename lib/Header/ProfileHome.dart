@@ -14,7 +14,8 @@ class ProfileHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
       return MaterialButton(
-        splashColor: Colors.black,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         onPressed: (){
           showDialog(
             context: context,

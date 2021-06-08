@@ -38,7 +38,8 @@ class ProductSmall extends StatelessWidget {
         ),
         child: Center(
           child: MaterialButton(
-            splashColor: Colors.black,
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             child: Image.network(img, fit: BoxFit.cover,),
             onPressed: (){
               Navigator.push(

@@ -1,11 +1,28 @@
+import 'package:appetit/DATABASE/Content.dart';
 import 'package:appetit/DialogueBox/DialogueBox.dart';
+import 'package:appetit/File%20Handling/ReadWrite.dart';
+import 'package:appetit/NavBar/NavBar.dart';
 import 'package:flutter/material.dart';
 
 class eSewaLoad extends StatelessWidget {
+
+  final Function _setIndex;
+
+  eSewaLoad(this._setIndex);
+
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-        onPressed: () {},
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        onPressed: () {
+        ReadWrite readWrite = ReadWrite();
+        balance += 100;
+        readWrite.writeContents((balance+100).toStringAsFixed(2), rp.toString(), totalRP.toString());
+        Navigator.pop(context);
+        NavBarState.onItemTapped(1);
+        _setIndex(1);
+        },
         child: Container(
           decoration: BoxDecoration(
             boxShadow: DialogueBoxState.isSelected[1]

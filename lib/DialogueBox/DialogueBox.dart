@@ -1,4 +1,6 @@
 
+import 'package:appetit/File%20Handling/Dark.dart';
+import 'package:appetit/File%20Handling/Log.dart';
 import 'package:appetit/LoadMoney/eSewaLoad.dart';
 import 'package:appetit/NavBar/NavBar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -41,11 +43,14 @@ class DialogueBoxState extends State<DialogueBox> {
           selectedColor: DialogueBoxState.isSelected[1] ? Colors.white : Colors.black,
           selectedBorderColor: DialogueBoxState.isSelected[1] ? Colors.white : Colors.black,
           onPressed: (int i) {
+            Dark dark = Dark();
             setState(() {
               if (i==0) {
                 isSelected = [true, false];
+                dark.writeContents(false);
               }else{
                 isSelected = [false, true];
+                dark.writeContents(true);
               }
               widget._setIndex(1);
               NavBarState.onItemTapped(1);
@@ -55,11 +60,15 @@ class DialogueBoxState extends State<DialogueBox> {
           borderRadius: BorderRadius.circular(20),
           constraints: BoxConstraints.tightFor(width: 80, height: 50),
         ),
-        eSewaLoad(),
+        eSewaLoad(widget._setIndex),
         MaterialButton(
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             onPressed: () async{
                 await FirebaseAuth.instance.signOut();
                 widget._setLogged(false);
+                Log log = Log();
+                log.writeContents(false);
               },
             child: Container(
               width: 160,

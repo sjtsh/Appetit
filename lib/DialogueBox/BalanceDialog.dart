@@ -30,8 +30,10 @@ class _BalanceDialogState extends State<BalanceDialog> {
         textAlign: TextAlign.left,
         style: TextStyle(color: DialogueBoxState.isSelected[1] ? Colors.white : Colors.black, fontSize: 20),
       ),
-      eSewaLoad(),
+      eSewaLoad(widget._setIndex),
       MaterialButton(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
           onPressed: () {
             if (widget.condition) {
               Navigator.pop(context);

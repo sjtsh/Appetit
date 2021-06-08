@@ -25,11 +25,13 @@ class GetRestaurants extends StatelessWidget {
             return Text('Something went wrong');
           }
 
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return SkeletonRestaurant();
-          }
-          return Restaurant(
-              product, snapshot.data!.docs[0], _setIndex, _setLogged, condition, setImage);
+          // if(snapshot.data!.docs[0].exists){
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return SkeletonRestaurant();
+            }
+          // }
+          return snapshot.data!.docs[0].exists? Restaurant(
+          product, snapshot.data!.docs[0], _setIndex, _setLogged, condition, setImage):Container();
         });
   }
 }

@@ -1,6 +1,7 @@
 
 import 'package:appetit/DATABASE/Content.dart';
 import 'package:appetit/DialogueBox/DialogueBox.dart';
+import 'package:appetit/File%20Handling/ReadWrite.dart';
 import 'package:appetit/Track/Timer.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,8 @@ class ReputationButton extends StatelessWidget {
         ],
       ),
       child: MaterialButton(
-        splashColor: Colors.black,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8),
           child: Text(
@@ -46,6 +48,8 @@ class ReputationButton extends StatelessWidget {
             print("checked out");
             balance += double.parse((rp/100).toStringAsFixed(2));
             rp = 0;
+            ReadWrite readWrite = ReadWrite();
+            readWrite.writeContents(balance.toStringAsFixed(2), rp.toString(), totalRP.toString());
             _setIndex(0);
           } else {
             print("delivered");

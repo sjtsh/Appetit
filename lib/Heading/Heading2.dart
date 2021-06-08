@@ -16,7 +16,7 @@ class Heading2 extends StatelessWidget {
       child: Row(
         children: [
           Text(
-            "Featured",
+            "Categories",
             style: TextStyle(
               color: DialogueBoxState.isSelected[1] ? Colors.white : Colors.black,
               fontSize: 20,
@@ -26,7 +26,8 @@ class Heading2 extends StatelessWidget {
             child: Container(),
           ),
           MaterialButton(
-            splashColor: Colors.black,
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             onPressed: () {
               Navigator.push(
                 context,

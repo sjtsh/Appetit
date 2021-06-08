@@ -24,7 +24,6 @@ class GetFavourites extends StatelessWidget {
           if (snapshot.hasError) {
             return Text('Something went wrong');
           }
-
           if (snapshot.connectionState == ConnectionState.waiting) {
             return SkeletonRestaurant();
           }

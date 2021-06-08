@@ -1,18 +1,19 @@
 import 'package:appetit/DATABASE/GetSearch.dart';
+import 'package:appetit/File%20Handling/ReadWrite.dart';
 import 'package:flutter/material.dart';
 
 import 'DATABASE/Content.dart';
 import 'DialogueBox/DialogueBox.dart';
+import 'File Handling/Dark.dart';
 import 'Header/Header.dart';
 import 'HomeScreen/HomeScreen.dart';
 import 'NavBar/NavBar.dart';
 import 'Reputation/Reputation.dart';
 import 'Track/Track.dart';
 
-
 class Appetit extends StatefulWidget {
-
   final Function _setLogged;
+
   Appetit(this._setLogged);
 
   @override
@@ -57,7 +58,9 @@ class _AppetitState extends State<Appetit> {
         debugShowCheckedModeBanner: false,
         home: SafeArea(
           child: Scaffold(
-            backgroundColor: DialogueBoxState.isSelected[1] ? Color(0xff272727) : Color(0xffECFAFF),
+            backgroundColor: DialogueBoxState.isSelected[1]
+                ? Color(0xff272727)
+                : Color(0xffECFAFF),
             body: Column(
               children: [
                 Expanded(

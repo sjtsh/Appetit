@@ -17,7 +17,8 @@ class ProductLarge extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 15.0, bottom: 25),
       child: MaterialButton(
-        splashColor: Colors.black,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         onPressed: () {
           Navigator.push(
             context,
