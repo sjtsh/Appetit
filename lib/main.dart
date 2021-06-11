@@ -22,7 +22,8 @@ void main() async {
 
   favorites.readContents().then((List value) {
     favourites = value;
-    print( "*********************************************" + value.toString() + "*********************************************");
+    print("*********************************************" + value.toString() +
+        "*********************************************");
   });
   readWrite.readContents().then((List value) {
     balance = double.parse(value[0]);
@@ -34,7 +35,7 @@ void main() async {
     DialogueBoxState.isSelected[0] = !value;
   });
   Log log = Log();
-  log.readContents().then((value){
+  log.readContents().then((value) {
     loggedIn = value;
     runApp(App());
   });

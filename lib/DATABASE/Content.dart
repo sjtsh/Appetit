@@ -2,9 +2,9 @@
 
 var loggedIn;
 
-var balance;
-var rp;
-var totalRP;
+var balance =0.0;
+var rp = 0;
+var totalRP = 0;
 
 
 var favourites;
