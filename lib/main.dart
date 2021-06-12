@@ -12,6 +12,12 @@ import 'File Handling/ReadWrite.dart';
 import 'Log In/AndroidAuthProvider.dart';
 import 'NotAppetit.dart';
 
+
+
+//**********************************************************
+//YOU CAN JUST LOAD MONEY TO GET 100 DOLLARS WITHIN THE APP
+//**********************************************************
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 

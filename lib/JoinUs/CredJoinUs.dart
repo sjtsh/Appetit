@@ -12,27 +12,29 @@ class CredJoinUs extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.only(right: 20, left: 20, top: 5),
-          child: TextField(
-            textAlignVertical: TextAlignVertical.center,
-            enableSuggestions: true,
-            keyboardAppearance: Brightness.dark,
-            cursorColor: Colors.white,
-            onSubmitted: (String input) {},
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              hintText: "Your Email",
-              hintStyle: TextStyle(
-                color: Colors.white.withOpacity(0.5),
+          child: SizedBox(
+            width: 250,
+            child: TextField(
+              textAlignVertical: TextAlignVertical.center,
+              enableSuggestions: true,
+              keyboardAppearance: Brightness.dark,
+              cursorColor: Colors.white,
+              onSubmitted: (String input) {},
+              style: TextStyle(
+                color: Colors.white,
                 fontSize: 18,
               ),
-              constraints: BoxConstraints(maxWidth: 250),
-              icon: Icon(
-                Icons.email,
-                color: Colors.white,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: "Your Email",
+                hintStyle: TextStyle(
+                  color: Colors.white.withOpacity(0.5),
+                  fontSize: 18,
+                ),
+                icon: Icon(
+                  Icons.email,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
@@ -49,26 +51,28 @@ class CredJoinUs extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.only(right: 20, left: 20, top: 5),
-          child: TextField(
-            textAlignVertical: TextAlignVertical.center,
-            keyboardAppearance: Brightness.dark,
-            cursorColor: Colors.white,
-            onSubmitted: (String input) {},
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              hintText: "Password",
-              hintStyle: TextStyle(
-                color: Colors.white.withOpacity(0.5),
+          child: SizedBox(
+          width: 250,
+            child: TextField(
+              textAlignVertical: TextAlignVertical.center,
+              keyboardAppearance: Brightness.dark,
+              cursorColor: Colors.white,
+              onSubmitted: (String input) {},
+              style: TextStyle(
+                color: Colors.white,
                 fontSize: 18,
               ),
-              constraints: BoxConstraints(maxWidth: 250),
-              icon: Icon(
-                Icons.vpn_key,
-                color: Colors.white,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: "Password",
+                hintStyle: TextStyle(
+                  color: Colors.white.withOpacity(0.5),
+                  fontSize: 18,
+                ),
+                icon: Icon(
+                  Icons.vpn_key,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
@@ -85,27 +89,29 @@ class CredJoinUs extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.only(right: 20, left: 20, top: 5),
-          child: TextField(
-            textAlignVertical: TextAlignVertical.center,
-            enableSuggestions: true,
-            keyboardAppearance: Brightness.dark,
-            cursorColor: Colors.white,
-            onSubmitted: (String input) {},
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              hintText: "Retype Password",
-              hintStyle: TextStyle(
-                color: Colors.white.withOpacity(0.5),
+          child: SizedBox(
+            width: 250,
+            child: TextField(
+              textAlignVertical: TextAlignVertical.center,
+              enableSuggestions: true,
+              keyboardAppearance: Brightness.dark,
+              cursorColor: Colors.white,
+              onSubmitted: (String input) {},
+              style: TextStyle(
+                color: Colors.white,
                 fontSize: 18,
               ),
-              constraints: BoxConstraints(maxWidth: 250),
-              icon: Icon(
-                Icons.vpn_key,
-                color: Colors.white,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: "Retype Password",
+                hintStyle: TextStyle(
+                  color: Colors.white.withOpacity(0.5),
+                  fontSize: 18,
+                ),
+                icon: Icon(
+                  Icons.vpn_key,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
